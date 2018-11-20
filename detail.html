@@ -10,7 +10,8 @@
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="css/jquery.bxslider.css" />
-	<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.fancybox.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/slick.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="stylesheet" type="text/css" href="css/cus.css" />
     <link rel="stylesheet" type="text/css" href="css/responsive.css" />
@@ -18,7 +19,7 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/owl.carousel.min.js"></script> 
     <!-- <script src="mmenu/jquery.mmenu.all.min.js" defer ></script> -->
-    <script src="js/jquery.bxslider.min.js"></script>
+    <script src="js/slick.min.js"></script>
 	<script src="js/jquery.fancybox.min.js"></script>
 	<script src="js/script.js"></script>
 </head>
@@ -139,7 +140,8 @@
                 <div class="row">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Sản phẩm</li>
+                        <li class="breadcrumb-item"><a href="#">Sản phẩm</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Sản phẩm 1</li>
                     </ol>
                 </div>
             </div>
@@ -148,47 +150,67 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-9">
-                        <div class="short-cate">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        <div class="album-image slider_product">
+                            <div class="slider-for">
+                                <div class="item">
+                                    <img src="images/slider1.jpg" alt="image" class="img-responsive"  draggable="false"/>
+                                </div>
+                                <div class="item">
+                                    <img src="images/slider2.jpg" alt="image" class="img-responsive"  draggable="false"/>
+                                </div>
+                                <div class="item">
+                                    <img src="images/slider3.jpg" alt="image" class="img-responsive"  draggable="false"/>
+                                </div>
+                            </div>
+
+                            <div class="slider-nav">
+                                <div class="item">
+                                    <img src="images/slider1.jpg" alt="image" class="img-responsive" draggable="false"/>
+                                </div>
+                                <div class="item">
+                                    <img src="images/slider2.jpg" alt="image" class="img-responsive" draggable="false"/>
+                                </div>
+                                <div class="item">
+                                    <img src="images/slider3.jpg" alt="image" class="img-responsive" draggable="false"/>
+                                </div>
+                            </div>
                         </div>
-                        <div class="list-item">
-                            <div class="col-md-4 _item">
-                                <div class="box-item_cate">
-                                    <a href="" title="" class="zoom"><img src="images/cate1.jpg"></a>
-                                    <div class="name_cate"><a href="" title="">Mẫu tranh trang trí quán cafe - màn</a></div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 _item">
-                                <div class="box-item_cate">
-                                    <a href="" title="" class="zoom"><img src="images/cate2.jpg"></a>
-                                    <div class="name_cate"><a href="" title="">Mẫu tranh trang trí quán cafe - màn</a></div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 _item">
-                                <div class="box-item_cate">
-                                    <a href="" title="" class="zoom"><img src="images/cate1.jpg"></a>
-                                    <div class="name_cate"><a href="" title="">Mẫu tranh trang trí quán cafe - màn</a></div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 _item">
-                                <div class="box-item_cate">
-                                    <a href="" title="" class="zoom"><img src="images/cate2.jpg"></a>
-                                    <div class="name_cate"><a href="" title="">Mẫu tranh trang trí quán cafe - màn</a></div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 _item">
-                                <div class="box-item_cate">
-                                    <a href="" title="" class="zoom"><img src="images/cate3.jpg"></a>
-                                    <div class="name_cate"><a href="" title="">Mẫu tranh trang trí quán cafe - màn</a></div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 _item">
-                                <div class="box-item_cate">
-                                    <a href="" title="" class="zoom"><img src="images/cate2.jpg"></a>
-                                    <div class="name_cate"><a href="" title="">Mẫu tranh trang trí quán cafe - màn</a></div>
+                        <h1 class="name-product">Sản phẩm demo 1</h1>
+                        <p class="code_product">Mã sản phẩm: abc</p>
+                        <p class="price_product">Giá: 400000 vnđ</p>
+                        <p class="price_old">Giá cũ: 500000 vnđ</p>
+                        <div class="short-des-product">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. 
+                        </div>
+                        <div class="buy">
+                            <form action="" method="get" accept-charset="utf-8">
+                                <span>Số lượng: <input type="number" name="numb qty" class="number_product" value="" placeholder=""></span>
+                                <button type="submit" class=" btn-order"><i class="fa fa-cart-plus"></i> Đặt mua</button>
+                               
+                            </form>
+
+                        </div>
+                        <div class="info-comment">
+                            <div id="exTab1" class=""> 
+                                <ul  class="nav nav-pills">
+                                    <li class="active">
+                                    <a  href="#1a" data-toggle="tab">Thông tin chi tiết</a>
+                                    </li>
+                                    <li><a href="#2a" data-toggle="tab">Bình luận</a>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-content clearfix">
+                                    <div class="tab-pane active" id="1a">
+                                        <h3>Content's background color is the same for the tab</h3>
+                                    </div>
+                                    <div class="tab-pane" id="2a">
+                                        
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>

@@ -1,30 +1,31 @@
 <html>
 
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Trang chủ</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Trang chủ</title>
     <!-- <link href="mmenu/jquery.mmenu.all.min.css" rel="stylesheet" /> -->
-	<link rel="stylesheet" type="text/css" href="css/animate.css" />
-	<link rel="stylesheet" type="text/css" href="css/owl.carousel.css" />
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/animate.css" />
+    <link rel="stylesheet" type="text/css" href="css/owl.carousel.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="css/jquery.bxslider.css" />
-	<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.fancybox.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/slick.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="stylesheet" type="text/css" href="css/cus.css" />
     <link rel="stylesheet" type="text/css" href="css/responsive.css" />
-	<script src="js/jquery-2.1.4.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script> 
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script> 
     <!-- <script src="mmenu/jquery.mmenu.all.min.js" defer ></script> -->
-    <script src="js/jquery.bxslider.min.js"></script>
-	<script src="js/jquery.fancybox.min.js"></script>
-	<script src="js/script.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/jquery.fancybox.min.js"></script>
+    <script src="js/script.js"></script>
 </head>
 
 <body>
-	<header id="header" class="hidden-xs hidden-sm">
+    <header id="header" class="hidden-xs hidden-sm">
         <div class="top-header">
             <div class="container">
                 <div class="row">
@@ -139,115 +140,139 @@
                 <div class="row">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Sản phẩm</li>
+                        <li class="breadcrumb-item active" aria-current="page">Thanh toán</li>
                     </ol>
                 </div>
             </div>
         </nav>
-        <div class="list-category">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-9">
-                        <div class="short-cate">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        
+
+
+<style>
+    .cf-input{background:#f5f5f5;width:100%;padding:9px 15px;font-size:13px;color:#222;margin-bottom:15px;border:none;height:40px}
+    .cf-sub{color:#fff;font-size:18px;background:#232323;padding:10px 25px;margin-bottom:25px;border:none;width:100%;text-align:center;text-transform:uppercase}
+    .bread-fe h1{font-size:16px;font-weight:400}
+    .bread-fe{background-color:#ededed;border-top:2px solid #767676;padding:15px 0}
+    .cart{padding:0px 0;background-color: white;}
+    .cart h2{border-bottom:2px solid #ddd;font-size:18px;font-weight:600;padding-bottom:20px;margin-bottom:20px}
+    thead th{text-align:center}
+    .cart-info h3{font-size:16px;font-weight:600;margin-bottom:15px;text-transform:uppercase}
+    .info-total{border:solid 1px #aeaeae;padding:30px 15px}
+    .info-total span{font-family:'Linotte'}
+    .info-total div:first-child{margin-bottom:10px}
+    .total{color:#ff4200;font-size:16px;font-weight:700}
+    .order{background-color:#820024;border:2px solid transparent;color:#fff;display:inline-block;width:100%;padding:10px 0;margin-top:20px;text-align:center;text-transform:uppercase;transition:all .5s ease}
+    .order:hover,.order:focus{border-color:#820024;background:#fff;color:#820024}
+    .radio-inline{padding:10px 0;width:100%}
+    .radio-inline input{position:absolute;visibility:hidden;margin-left:0!important}
+    .radio-inline input[type=checkbox] + span,.radio-inline input[type=radio] + span{position:relative;padding-left:30px}
+    .radio-inline input[type=checkbox] + span:before,.radio-inline input[type=radio] + span:before{border:1px solid #b7b7b7;width:18px;height:18px;content:' ';position:absolute;left:0;top:0;border-radius:50%}
+    .radio-inline input[type=checkbox]:checked + span:after,.radio-inline input[type=radio]:checked + span:after{background:#820024;width:10px;height:10px;position:absolute;left:4px;top:4px;border-radius:50%;content:' '}
+    .radio label{padding-left:0}
+    .toHide{display:none}
+    .form-info .cf-input{border:solid 1px #aeaeae;background:transparent}
+    .form-info label{margin-bottom:10px}
+    .form-info label span{color:#ef0000}
+    .btn-order{background-color:#820024;border:1px solid #820024;color:#fff;font-size:16px;margin-top:20px;padding:0px 20px;text-transform:uppercase;transition:all .4s ease}
+    .btn-order:hover,.btn-order:focus{background:#fff;color:#820024}
+    .order-right h4{background-color:#e1e1e1;font-size:16px;padding:15px;text-transform:uppercase}
+    .order-right h4 span{text-transform:lowercase}
+    .order-table .table{margin-bottom:0}
+    .order-table .table th{text-align:left}
+    .order-table .table thead{background-color:#f6f6f6}
+    .order-table .table tr td:not(:first-child){text-align:center}
+    .order-table .table tr td:first-child{font-size:13px}
+    .order-table table tbody tr{border:none}
+    .note{color:#ef0000;padding:10px}
+    .bot{background-color:#f6f6f6;font-size:16px}
+    .tranform{color:#000ad2;margin-top:10px}
+    .money-total{background-color:#f6f6f6;padding:12px 15px;margin:20px 0}
+    .money-total span:last-child{color:#ff4200;font-size:20px}
+    .order-table tbody{border:solid 1px #aeaeae;border-top:none}
+    .payment{border:solid 1px #aeaeae;border-top:none;padding:20px 12px}
+    .payment-title{margin-bottom:0}
+    .bank-brief{margin-left:15px}
+    .live{padding:0 0 0 12px}
+    .flex-center-between{display: flex;justify-content: space-between;}
+</style>
+<div class="clear" style="clear: both;"></div>
+<section class="cart" style="margin-top: 10px;">
+    <div class="container">
+        <form class="form address" action="" method="post" accept-charset="utf-8">
+           
+            <input type="hidden" name="code_hidden" value="{!! str_random(6) !!}">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>THÔNG TIN GIAO HÀNG</h2>
+                    <div class="form-info">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Họ và tên <span>*</span></label>
+                                <input type="text" class="cf-input" placeholder="" name="name" required="">
+                            </div>
+                            <div class="col-md-6">
+                                <label>Số điện thoại <span>*</span></label>
+                                <input type="text" class="cf-input" placeholder="" name="phone" required="">
+                            </div>
                         </div>
-                        <div class="list-item">
-                            <div class="col-md-4 _item">
-                                <div class="box-item_cate">
-                                    <a href="" title="" class="zoom"><img src="images/cate1.jpg"></a>
-                                    <div class="name_cate"><a href="" title="">Mẫu tranh trang trí quán cafe - màn</a></div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 _item">
-                                <div class="box-item_cate">
-                                    <a href="" title="" class="zoom"><img src="images/cate2.jpg"></a>
-                                    <div class="name_cate"><a href="" title="">Mẫu tranh trang trí quán cafe - màn</a></div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 _item">
-                                <div class="box-item_cate">
-                                    <a href="" title="" class="zoom"><img src="images/cate1.jpg"></a>
-                                    <div class="name_cate"><a href="" title="">Mẫu tranh trang trí quán cafe - màn</a></div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 _item">
-                                <div class="box-item_cate">
-                                    <a href="" title="" class="zoom"><img src="images/cate2.jpg"></a>
-                                    <div class="name_cate"><a href="" title="">Mẫu tranh trang trí quán cafe - màn</a></div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 _item">
-                                <div class="box-item_cate">
-                                    <a href="" title="" class="zoom"><img src="images/cate3.jpg"></a>
-                                    <div class="name_cate"><a href="" title="">Mẫu tranh trang trí quán cafe - màn</a></div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 _item">
-                                <div class="box-item_cate">
-                                    <a href="" title="" class="zoom"><img src="images/cate2.jpg"></a>
-                                    <div class="name_cate"><a href="" title="">Mẫu tranh trang trí quán cafe - màn</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="list_category_product">
-                            <p class="title_cate">
-                                Dự án đã thực hiện
-                            </p>
-                            <ul class="">
-                                <li><a href="">Vẽ tranh tường 3D</a></li>
-                                <li><a href="">Vẽ tranh tường 3D Nghệ thuật</a></li>
-                                <li><a href="">Vẽ tranh tường mầm non</a></li>
-                                <li><a href="">Vẽ tranh tường quán trà sữa</a></li>
-                                <li><a href="">Vẽ tranh tường phòng khách</a></li>
-                                <li><a href="">Vẽ tranh tường phòng ngủ</a></li>
-                                <li><a href="">Vẽ tranh tường quán cafe</a></li>
-                                <li><a href="">Vẽ tranh tường quán karaoke</a></li>
-                                <li><a href="">Vẽ tranh tường phòng em bé</a></li>
-                            </ul>
-                        </div>
-                        <div class="list_category_product">
-                            <p class="title_cate">
-                                Sản phẩm mẫu
-                            </p>
-                            <ul class="">
-                                <li><a href="">Vẽ tranh tường 3D</a></li>
-                                <li><a href="">Vẽ tranh tường 3D Nghệ thuật</a></li>
-                                <li><a href="">Vẽ tranh tường mầm non</a></li>
-                                <li><a href="">Vẽ tranh tường quán trà sữa</a></li>
-                                <li><a href="">Vẽ tranh tường phòng khách</a></li>
-                                <li><a href="">Vẽ tranh tường phòng ngủ</a></li>
-                                <li><a href="">Vẽ tranh tường quán cafe</a></li>
-                                <li><a href="">Vẽ tranh tường quán karaoke</a></li>
-                                <li><a href="">Vẽ tranh tường phòng em bé</a></li>
-                            </ul>
-                        </div>
-                        <div class="list_category_product">
-                            <p class="title_cate">
-                                Tin nổi bật
-                            </p>
-                            <ul class="">
-                                <li><a href="">Vẽ tranh tường 3D</a></li>
-                                <li><a href="">Vẽ tranh tường 3D Nghệ thuật</a></li>
-                                <li><a href="">Vẽ tranh tường mầm non</a></li>
-                                <li><a href="">Vẽ tranh tường quán trà sữa</a></li>
-                                <li><a href="">Vẽ tranh tường phòng khách</a></li>
-                                <li><a href="">Vẽ tranh tường phòng ngủ</a></li>
-                                <li><a href="">Vẽ tranh tường quán cafe</a></li>
-                                <li><a href="">Vẽ tranh tường quán karaoke</a></li>
-                                <li><a href="">Vẽ tranh tường phòng em bé</a></li>
-                            </ul>
+                        <label>Email <span>*</span></label>
+                        <input type="email" class="cf-input" placeholder="" name="email">
+                        
+                        <label>Địa chỉ <span>*</span></label>
+                        <input type="text" class="cf-input" placeholder="" name="address" required="">
+                        <label>Ghi chú</label>
+                        <textarea  id="" cols="30" rows="8" class="cf-input" placeholder="" name="note"></textarea>
+                        <div class="flex-center-center">
+                            <button class="btn-order">Đặt hàng</button>
                         </div>
                     </div>
                 </div>
+                <div class="col-md-6 order-right">
+                    <h4>THÔNG TIN ĐƠN HÀNG  <span>( 2 sản phẩm)</span></h4>
+                    <div class="order-table">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Sản phẩm</th>
+                                <th>Số lượng</th>
+                                <th>Giá</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                           
+                            <tr>
+                                <td>a</td>
+                                <td>3</td>
+                                <td>3000</td>
+                            </tr>
+                                                    
+                            <tr>
+                                <td colspan="3" class="bot">
+                                    <p class="flex-center-between">
+                                        <span>Tạm tính</span>
+                                        <span>9000 VNĐ</span>
+                                    </p>
+                                    
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="flex-center-between money-total">
+                            <span>
+                                Tổng tiền <br>(Đã bao gốm VAT)
+                            </span>
+                            <span>9000 VNĐ</span>
+                        </div>
+                    </div>
+                    
+                </div>
             </div>
-        </div>
+        </form>
     </div>
-	
+</section>
+
+    </div>
+    
     <footer style="background: url('images/bg_footer.png'); background-size: cover;">
         <div class="container">
             <div class="row">

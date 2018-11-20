@@ -406,3 +406,157 @@ footer .left{
 .list-item ._item{
 	margin-top: 30px;
 }
+.name_video a{
+	color: #000;
+	font-size: 16px;
+	font-weight: bold;
+}
+.list-category{
+	margin-top: 20px;
+}
+.title_cate{
+	text-transform: uppercase;
+	font-size: 16px;
+	background: #C61E1E;
+	color: #fff;
+	text-align: center;
+	padding-top:10px;
+	padding-bottom: 10px;
+	/*width: 100%;
+	float: left;*/
+}
+.list_category_product{
+	border: 1px dotted #C61E1E;
+	border-top: none;
+	margin-bottom: 20px;
+}
+.list_category_product ul li{
+	border-bottom: 1px solid #dcdcdc;
+}
+.list_category_product ul li:last-child{
+	border-bottom: none;
+}
+.list_category_product ul li a{
+	color: #000;
+	text-transform: uppercase;
+	font-weight: bold;
+	padding-left: 10px;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	display: block;
+}
+.name-product{
+	font-size: 22px;
+	text-transform: uppercase;
+}
+.price_product{
+	color: red;
+	font-size: 20px;
+}
+.buy{
+	margin-top: 20px;
+}
+.number_product{
+	width: 100px;
+	height: 35px;
+}
+.btn-order{
+	height: 35px;
+	border-radius: 0 !important;
+	border:1px solid #EC971F;
+	background: #EC971F;
+	padding-left: 10px;
+	padding-right: 10px;
+	color: #fff;
+	text-transform: uppercase;
+}
+.info-comment{
+	margin-top: 30px;
+}
+.list_news .row{
+	margin-top: 30px;
+}
+.list_news img{
+	width: 100%;
+}
+.name_news a{
+	color: #000;
+}
+.name_news a:hover{
+	color: red;
+}
+.read-more{
+	margin-top: 20px;
+}
+.read-more a{
+	background: red;
+	color: #fff;
+	padding: 10px;
+}
+.box-item-news{
+	width: 100%;
+	float: left;
+	margin-bottom: 20px;
+	border-bottom: 1px dotted #CCC;
+	padding-bottom: 10px;
+}
+.box-item-news .left{
+	padding-left: 0px;
+}
+.name_news_detail{
+	font-size: 22px;
+	font-weight: bold;
+	text-transform: uppercase;
+	margin-top: 10px;
+}
+.content_detail{
+	font-size: 15px;
+	text-align: justify;
+}
+.name_company{
+	font-family: ThuPhap;
+	font-size: 28px;
+	margin-bottom: 10px;
+}
+.fwb{
+	font-weight: bold;
+}
+.btn-gui{
+	margin-top: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.info-company{
+	margin-bottom: 30px;
+}
+.content_cart{
+	margin-top: 30px;
+}
+.qty-input{
+	width: 100px;
+}
+.vk-shopcart-item__title{
+	font-size: 16px;
+}
+.vk-shopcart__bot{
+	width: 100%;
+	float: left;
+	margin-bottom: 30px;
+}
+._left a{
+	background: #E54725;
+	color: #fff;
+	padding: 10px;
+	text-transform: uppercase;
+}
+._right{
+	font-size: 18px;
+	text-transform: uppercase;
+	text-align: right;
+}
+.vk-btn--red-1{
+	background: #E54725;
+	color: #fff;
+	padding: 10px;
+	text-transform: uppercase;
+}

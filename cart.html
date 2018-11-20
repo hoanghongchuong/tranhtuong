@@ -10,7 +10,8 @@
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="css/jquery.bxslider.css" />
-	<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.fancybox.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/slick.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="stylesheet" type="text/css" href="css/cus.css" />
     <link rel="stylesheet" type="text/css" href="css/responsive.css" />
@@ -18,7 +19,7 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/owl.carousel.min.js"></script> 
     <!-- <script src="mmenu/jquery.mmenu.all.min.js" defer ></script> -->
-    <script src="js/jquery.bxslider.min.js"></script>
+    <script src="js/slick.min.js"></script>
 	<script src="js/jquery.fancybox.min.js"></script>
 	<script src="js/script.js"></script>
 </head>
@@ -139,111 +140,69 @@
                 <div class="row">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Sản phẩm</li>
+                        <li class="breadcrumb-item"><a href="#">Tin tức</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">VẼ TRANH TƯỜNG PHÒNG KHÁCH HỢP PHONG THỦY GIA CHỦ</li>
                     </ol>
                 </div>
             </div>
         </nav>
-        <div class="list-category">
+        <div class="content_cart">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-9">
-                        <div class="short-cate">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </div>
-                        <div class="list-item">
-                            <div class="col-md-4 _item">
-                                <div class="box-item_cate">
-                                    <a href="" title="" class="zoom"><img src="images/cate1.jpg"></a>
-                                    <div class="name_cate"><a href="" title="">Mẫu tranh trang trí quán cafe - màn</a></div>
+                <div class="table-responsive">
+                    <table class="table vk-table--cart">
+                        <thead>
+                        <tr>
+                            <th>Sản phẩm</th>
+                            <th>Giá</th>
+                            <th>Số lượng</th>
+                            <th>Tổng</th>
+                            <th>Thao tác</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <div class="vk-shopcart-item">                                    
+                                    <div class="vk-shopcart-item__brief">
+                                        <h3 class="vk-shopcart-item__title"><a href="#">Sản phẩm 1</a></h3>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4 _item">
-                                <div class="box-item_cate">
-                                    <a href="" title="" class="zoom"><img src="images/cate2.jpg"></a>
-                                    <div class="name_cate"><a href="" title="">Mẫu tranh trang trí quán cafe - màn</a></div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 _item">
-                                <div class="box-item_cate">
-                                    <a href="" title="" class="zoom"><img src="images/cate1.jpg"></a>
-                                    <div class="name_cate"><a href="" title="">Mẫu tranh trang trí quán cafe - màn</a></div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 _item">
-                                <div class="box-item_cate">
-                                    <a href="" title="" class="zoom"><img src="images/cate2.jpg"></a>
-                                    <div class="name_cate"><a href="" title="">Mẫu tranh trang trí quán cafe - màn</a></div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 _item">
-                                <div class="box-item_cate">
-                                    <a href="" title="" class="zoom"><img src="images/cate3.jpg"></a>
-                                    <div class="name_cate"><a href="" title="">Mẫu tranh trang trí quán cafe - màn</a></div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 _item">
-                                <div class="box-item_cate">
-                                    <a href="" title="" class="zoom"><img src="images/cate2.jpg"></a>
-                                    <div class="name_cate"><a href="" title="">Mẫu tranh trang trí quán cafe - màn</a></div>
-                                </div>
-                            </div>
-                        </div>
+                            </td>
+                            <td>
+                                <div class="vk-shopcart-item__price">1 000.000 đ</div>
+                            </td>
+                            <td>
+                                <div class="vk-calculator" data-calculator>
+                                    <input type="number" name="qty" value="1" min="1" class="qty-input form-control">
+                                    
+                                </div> <!--./calculator-->
+                            </td>
+                            <td>
+                                <div class="vk-shopcart-item__price">1 000.000 đ</div>
+                            </td>
+                            <td>
+                                <a href="#" class="vk-btn vk-btn--outline-red-1">
+                                    <i class="fa fa-trash-alt"></i>Xóa
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="vk-shopcart__bot">
+                    <div class="_left col-md-6">
+                        <a href="shop.html" class="vk-btn vk-btn--yellow-1">Tiếp tục mua hàng</a>
+                        
                     </div>
-                    <div class="col-md-3">
-                        <div class="list_category_product">
-                            <p class="title_cate">
-                                Dự án đã thực hiện
-                            </p>
-                            <ul class="">
-                                <li><a href="">Vẽ tranh tường 3D</a></li>
-                                <li><a href="">Vẽ tranh tường 3D Nghệ thuật</a></li>
-                                <li><a href="">Vẽ tranh tường mầm non</a></li>
-                                <li><a href="">Vẽ tranh tường quán trà sữa</a></li>
-                                <li><a href="">Vẽ tranh tường phòng khách</a></li>
-                                <li><a href="">Vẽ tranh tường phòng ngủ</a></li>
-                                <li><a href="">Vẽ tranh tường quán cafe</a></li>
-                                <li><a href="">Vẽ tranh tường quán karaoke</a></li>
-                                <li><a href="">Vẽ tranh tường phòng em bé</a></li>
-                            </ul>
-                        </div>
-                        <div class="list_category_product">
-                            <p class="title_cate">
-                                Sản phẩm mẫu
-                            </p>
-                            <ul class="">
-                                <li><a href="">Vẽ tranh tường 3D</a></li>
-                                <li><a href="">Vẽ tranh tường 3D Nghệ thuật</a></li>
-                                <li><a href="">Vẽ tranh tường mầm non</a></li>
-                                <li><a href="">Vẽ tranh tường quán trà sữa</a></li>
-                                <li><a href="">Vẽ tranh tường phòng khách</a></li>
-                                <li><a href="">Vẽ tranh tường phòng ngủ</a></li>
-                                <li><a href="">Vẽ tranh tường quán cafe</a></li>
-                                <li><a href="">Vẽ tranh tường quán karaoke</a></li>
-                                <li><a href="">Vẽ tranh tường phòng em bé</a></li>
-                            </ul>
-                        </div>
-                        <div class="list_category_product">
-                            <p class="title_cate">
-                                Tin nổi bật
-                            </p>
-                            <ul class="">
-                                <li><a href="">Vẽ tranh tường 3D</a></li>
-                                <li><a href="">Vẽ tranh tường 3D Nghệ thuật</a></li>
-                                <li><a href="">Vẽ tranh tường mầm non</a></li>
-                                <li><a href="">Vẽ tranh tường quán trà sữa</a></li>
-                                <li><a href="">Vẽ tranh tường phòng khách</a></li>
-                                <li><a href="">Vẽ tranh tường phòng ngủ</a></li>
-                                <li><a href="">Vẽ tranh tường quán cafe</a></li>
-                                <li><a href="">Vẽ tranh tường quán karaoke</a></li>
-                                <li><a href="">Vẽ tranh tường phòng em bé</a></li>
-                            </ul>
-                        </div>
+                    <div class="_right col-md-6">
+                        <span>Thành tiền: </span><span class="vk-text--red-1 _price">11.000.000 đ</span>
                     </div>
                 </div>
+                <div class="text-right pt-30">
+                    <a href="checkout.html" class="vk-btn vk-btn--red-1">Thanh toán</a>
+                </div>
+
             </div>
         </div>
     </div>
