@@ -1,0 +1,49 @@
+.color-cart span{
+	display: inline-block;
+}
+.pagination{
+    margin: 0 auto;
+    display: inline-block;
+    /*float: right;*/
+}
+.pagination li{
+    display: inline-block;
+    margin-right: 0px;
+    /*border: 1px solid #6d2c2c;*/
+}
+.pagination li span, .pagination li a{
+    font-size: 16px;
+    /*font-weight: 600;*/
+    color: #000;
+    border: 0;
+    /*border: 1px solid #b7b7b7;*/
+    /*background: #a9afb3;*/
+    /*border-color: #6d2c2c;*/
+    /*border-radius: 3px;*/
+    /*padding: .5rem .75rem;*/
+    width: 42px;
+    height: 42px;
+    display: flex;
+    /*line-height: 35px;*/
+    justify-content: center;
+    align-items: center;
+    /*margin-right: 5px;*/
+}
+/*.pagination li a{
+    border-color: #409e03;
+}*/
+.pagination li.active span, .pagination li a:hover{
+    background: #e2b846 !important;
+    color: #fff !important;
+}
+.pagination li.disabled span{
+    color: #e2b846;
+}
+.pagination li:last-child a{
+    color: #e2b846 !important;
+    font-weight: normal;
+}
+.pagination li:last-child a:hover, .pagination li:first-child a:hover{
+    background: #e2b846 !important;
+    color: #fff !important;
+}
