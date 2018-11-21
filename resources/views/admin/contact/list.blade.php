@@ -84,7 +84,7 @@
                                         <th>Số điện thoại</th>
                                         <th>Email</th>
                                         <th>Địa chỉ</th>
-                                        <th>webiste</th>
+                                        <!-- <th>webiste</th> -->
                                         <th>Nội dung</th>
                                         <!-- <th>Ngày gửi</th> -->
                                         <!-- <th class="text-center with_dieuhuong">Hoạt động</th> -->
@@ -109,8 +109,8 @@
                                         <td>{{$item->phone}}</td>
                                         <td>{{$item->email}}</td>
                                         <?php $address = DB::table('province')->where('id',$item->province_id)->first(); ?>
-                                        <td>{{ $item->name }}</td>
-                                        <td>{{ $item->website }}</td>
+                                        <td>{{ $item->address }}</td>
+                                        <!-- <td>{{ $item->website }}</td> -->
                                         <td>{{$item->content}}</td>
                                         
                                         <td class="text-center with_dieuhuong">

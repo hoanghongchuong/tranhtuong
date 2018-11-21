@@ -56,7 +56,7 @@
 									
 									<div class="clearfix"></div>
 									
-									<div class="form-group">
+									<div class="form-group hidden">
 								      	<label for="ten">Danh mục cha</label>
 								      	<select name="txtNewsCate" class="form-control">
 
@@ -160,7 +160,7 @@
 				    	</label>
 				    </div>
 				    @endif -->
-			    	<div class="form-group">
+			    	<div class="form-group hidden">
 					      <label for="ten">Số thứ tự</label>
 					      <input type="number" min="1" name="stt" value="{!! count($data)+1 !!}" class="form-control" style="width: 100px;">
 				    </div>

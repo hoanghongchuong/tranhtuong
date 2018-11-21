@@ -2,48 +2,47 @@
 @section('content')
 <?php
     $setting = Cache::get('setting');
-    $banner = DB::table('banner_content')->where('position', 2)->first();
 ?>
-
-<main class="index">
-    <section class="about">
-        <div class="bread-wrap" style="background: url({{ asset('upload/banner/'.$banner->image) }});">
-            <div class="container">
-                <div class="pl-95">
-                    <h1 class="s36 light text-white text-uppercase bread-tit">Phong thủy</h1>
-                    <ul class="s12 list-unstyled text-uppercase bread">
-                        <li><a href="{{url('')}}" title="">Trang chủ</a></li>
-                        <li>Phong thủy</li>
-                    </ul>
-                </div>
+<div class="content-box content-box-page">
+    <nav aria-label="breadcrumb" class="nav-breadcrumb">
+        <div class="container">
+            <div class="row">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{url('')}}">Trang chủ</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Tin tức</li>
+                </ol>
             </div>
         </div>
-        <div class="pt-wrap">
-            <div class="container">
-                <div class="row pt-wrap-row">
+    </nav>
+    <div class="list_news">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 col-xs-12">
                     @foreach($tintuc as $item)
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="pt-item">
-                            <figure class="pt-img">
-                                <a href="{{url('phong-thuy',$item->alias.'.html')}}" title=""><img src="{{asset('upload/news/'.$item->photo)}}" title="{{$item->name}}" alt="{{$item->name}}"></a>
-                            </figure>
-                            <figcaption class="pt-content">
-                                <h2 class="bold t2 py-3 pt-content-tit"><a href="{{url('phong-thuy',$item->alias.'.html')}}" title="{{$item->name}}">{{$item->name}}</a></h2>
-                                <div class="pt-content-wrap">
-                                    <p>{!! $item->mota !!}</p>
-                                </div>
-                            </figcaption>
+                    <div class="box-item-news">
+                        <div class="col-md-4 col-xs-12 left">
+                            <a href="{{ url('tin-tuc/'.$item->alias.'.html') }}" title="{{$item->name}}" class="zoom"><img src="{{asset('upload/news/'.$item->photo)}}" ></a>
+                        </div>
+                        <div class="col-md-8 col-xs-12">
+                            <p class="name_news">
+                                <a href="{{ url('tin-tuc/'.$item->alias.'.html') }}" title="{{$item->name}}">{{$item->name}}
+                                </a>
+                            </p>
+                            <div class="short-des-news">
+                                {{$item->mota}}
+                            </div>
+                            <p class="read-more"><a href="{{ url('tin-tuc/'.$item->alias.'.html') }}" title="">Chi tiết >></a></p>
                         </div>
                     </div>
-                    @endforeach                    
+                    @endforeach
+                    <div class="pginations">
+                        {!! $tintuc->links() !!}
+                    </div>
                 </div>
-                <div class="text-center pb-4">
-                    {!! $tintuc->links() !!}
-                </div>
+                @include('templates.sidebar_right')
             </div>
         </div>
-        
-    </section>
-</main>
+    </div>
+</div>
 
 @endsection

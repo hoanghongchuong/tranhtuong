@@ -50,7 +50,7 @@
 									</div>									
 									<div class="clearfix"></div>
 									
-									<div class="form-group">
+									<div class="form-group hidden">
 								      	<label for="ten">Danh mục bài viết</label>
 								      	<select name="txtNewsCate" class="form-control">
 
@@ -155,7 +155,7 @@
 	            </div>
 	            <div class="clearfix"></div>				
 			    <div class="col-md-6">
-			    	<div class="form-group">
+			    	<div class="form-group hidden">
 					      <label for="ten">Số thứ tự</label>
 					      <input type="number" min="1" name="stt" value="{!! isset($data->stt) ? $data->stt : (count($news)+1) !!}" class="form-control" style="width: 100px;">
 				    </div>				    

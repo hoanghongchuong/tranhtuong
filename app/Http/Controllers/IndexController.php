@@ -253,22 +253,23 @@ class IndexController extends Controller {
 		}
 	}
 
-
 	public function getAbout()
 	{
-		$about = DB::table('about')->where('com','gioi-thieu')->first();
-		$tamnhin = DB::table('about')->where('com','tam-nhin')->first();
-		$sumenh = DB::table('about')->where('com','su-menh')->first();
-		$cotloi = DB::table('about')->where('com','cot-loi')->first();
-        $com = 'gioi-thieu';
-		$slogans = DB::table('lienket')->where('com','taisao')->orderBy('stt','asc')->get();
+		$about = DB::table('about')->where('com','gioi-thieu')->first();		
+        $com = 'gioi-thieu';		
 		 //Cấu hình SEO
 		$title = 'Giới thiệu';
 		$keyword = 'Giới thiệu';
 		$description = 'Giới thiệu';
 		// End cấu hình SEO
 
-		return view('templates.about_tpl', compact('about','keyword','description','title','img_share','com','slogans','tamnhin','sumenh','cotloi'));
+		return view('templates.about_tpl', compact('about','keyword','description','title','img_share','com'));
+	}
+	public function baogia()
+	{
+		$data = DB::table('about')->where('com','bao-gia')->first();
+		$title = 'Báo giá';	
+		return view('templates.baogia',compact('data','title'));
 	}
 	public function search(Request $request)
 	{
@@ -289,14 +290,14 @@ class IndexController extends Controller {
 
 	public function getNews()
 	{
-		$cateNews = DB::table('news_categories')->where('com','tin-tuc')->get();		
-		$tintuc = DB::table('news')->select()->where('status',1)->where('com','tin-tuc')->orderby('stt','asc')->paginate(24);		
-		$hot_news = DB::table('news')->where('status',1)->where('com', 'tin-tuc')->where('noibat',1)->orderBy('stt','asc')->take(8)->get();		
+		
+		$tintuc = DB::table('news')->select()->where('status',1)->where('com','tin-tuc')->orderby('id','desc')->paginate(10);		
+		
 		$com='tin-tuc';
 		// Cấu hình SEO
-		$title = "Tin tức phong thủy";
-		$keyword = "Tin tức phong thủy";
-		$description = "Tin tức phong thủy";
+		$title = "Tin tức";
+		$keyword = "Tin tức";
+		$description = "Tin tức";
 		$img_share = '';
 		// End cấu hình SEO
 		return view('templates.news_tpl', compact('tintuc','keyword','description','title','img_share','com','cateNews','hot_news'));
@@ -329,22 +330,12 @@ class IndexController extends Controller {
 		}
 	}
 	
-
-	public function getCateService(){
-		$cate_service = DB::table('news_categories')->where('status',1)->where('com','dich-vu')->orderBy('id','asc')->get();
-		return view('templates.cateservice_tpl', compact('cate_service'));
-	}
-
-	
-	
-	
 	public function getNewsDetail($id)
 	{
 		$news_detail = DB::table('news')->select()->where('status',1)->where('com','tin-tuc')->where('alias',$id)->get()->first();
-		$cateNews = DB::table('news_categories')->where('com','tin-tuc')->get();
+		
 		if(!empty($news_detail)){			
-			$cate_pro = DB::table('product_categories')->where('status',1)->where('parent_id',0)->orderby('id','asc')->get();
-			$baiviet_khac = DB::table('news')->where('status',1)->where('id','<>', $news_detail->id)->where('com','tin-tuc')->orderby('id','desc')->take(5)->get();
+			$cate_pro = DB::table('product_categories')->where('status',1)->where('parent_id',0)->orderby('id','asc')->get();			
 			$com='tin-tuc';
 			$setting = Cache::get('setting');
 			// Cấu hình SEO
@@ -357,7 +348,7 @@ class IndexController extends Controller {
 			$description = $news_detail->description;
 			$img_share = asset('upload/news/'.$news_detail->photo);
 
-			return view('templates.news_detail_tpl', compact('news_detail','com','banner_danhmuc','baiviet_khac','keyword','description','title','img_share'));
+			return view('templates.news_detail_tpl', compact('news_detail','com','keyword','description','title','img_share'));
 		}else{
 			return redirect()->route('getErrorNotFount');
 		}

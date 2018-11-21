@@ -34,8 +34,8 @@
 	                  	<div class="tab-pane active" id="tab_1">
 	                  		<div class="row">
 		                  		<div class="col-md-6 col-xs-12">
-		                  			@if($_GET['type']!='cot-loi')
-									<div class="form-group @if ($errors->first('fImages')!='') has-error @endif">
+		                  			
+									<!-- <div class="form-group @if ($errors->first('fImages')!='') has-error @endif">
 										<div class="form-group">
 											<img src="{{ asset('upload/hinhanh/'.$data->photo) }}" onerror="this.src='{{asset('public/admin_assets/images/no-image.jpg')}}'" class="img-responsive"  alt="NO PHOTO" />
 											<input type="hidden" name="img_current" value="{!! @$data->photo !!}">
@@ -46,14 +46,13 @@
 								    	@if ($errors->first('fImages')!='')
 								      	<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {!! $errors->first('fImages'); !!}</label>
 								      	@endif
-									</div>
-									@endif
-									@if($_GET['type']!='gioi-thieu')
-							    	<div class="form-group">
+									</div> -->
+									
+							    	<!-- <div class="form-group">
 								      	<label for="ten">Tên</label>
 								      	<input type="text" name="txtName" id="txtName" value="{{ @$data->name }}"  class="form-control" />
-									</div>
-									@endif
+									</div> -->
+									
 									<!-- <div class="form-group hidden @if ($errors->first('txtAlias')!='') has-error @endif">
 								      	<label for="alias">Đường dẫn tĩnh</label>
 								      	<input type="text" name="txtAlias" id="txtAlias" value="{{ @$data->alias }}"  class="form-control" />
