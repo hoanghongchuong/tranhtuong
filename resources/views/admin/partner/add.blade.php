@@ -37,17 +37,17 @@
               <div class="form-group">
                 <label for="">Tên</label>
                 <input type="text" name="name" class="form-control" value="">
-               @if ($errors->first('name')!='')
+                @if ($errors->first('name')!='')
                   <label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {!! $errors->first('name'); !!}</label>
-                  @endif
+                @endif
               </div>
             </div>
-            <div class="col-md-6">
+            <!-- <div class="col-md-6">
               <div class="form-group">
                 <label for="">Link</label>
                 <input type="text" name="txtLink" class="form-control" value="">
               </div>
-            </div>
+            </div> -->
             
           <div class="clearfix"></div>
           <div class="box-footer">

@@ -40,17 +40,17 @@
                 <input type="text" name="name" class="form-control" value="">
               </div>
             </div>
-            <div class="col-md-6">
+            <!-- <div class="col-md-6">
               <div class="form-group">
                 <label for="">Chức vụ</label>
 				        <input type="text" name="position" class="form-control" value="">		
                 
               </div>
-            </div>
+            </div> -->
             <div class="col-md-12">
               <div class="form-group">
                 <label for="">Nội dung</label>
-				<textarea  name="content" id="txtContent" class="form-control" value=""></textarea>	
+				        <textarea  name="content" id="txtContent" class="form-control" value=""></textarea>	
                 
               </div>
             </div>

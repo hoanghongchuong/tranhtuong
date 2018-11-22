@@ -44,12 +44,12 @@
                
               </div>
             </div>
-            <div class="col-md-6">
+            <!-- <div class="col-md-6">
               <div class="form-group">
                 <label for="">Link</label>
                 <input type="text" name="txtLink" class="form-control" value="{{$data->url}}">
               </div>
-            </div>
+            </div> -->
             
           <div class="clearfix"></div>
           <div class="box-footer">

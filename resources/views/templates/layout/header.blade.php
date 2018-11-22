@@ -11,9 +11,9 @@
                 </div>
                 <div class="col-md-4 box-search">
                     <div class="search-text" id="search_text">
-                        <form action="" method="get" accept-charset="utf-8">
+                        <form action="{{route('search')}}" method="get" accept-charset="utf-8">
                             <div class="form-group">
-                                <input type="text" placeholder="Từ khóa tìm kiếm" class="input-search text" name="">
+                                <input type="text" placeholder="Từ khóa tìm kiếm" required="" class="input-search text" name="txtSearch">
                                 <input type="submit" class="btn-search" id="search_btn" name="">
                             </div>
                         </form>
@@ -122,8 +122,8 @@
                     <li><a href="#">Đối tác - khách hàng</a></li>
                 </ul>
             </li> -->
-            <li><a href="#">Sản phẩm mẫu</a></li>
-            <li><a href="#">Đã thi công</a></li>
+            <li><a href="{{url('san-pham-mau')}}">Sản phẩm mẫu</a></li>
+            <li><a href="{{url('da-thi-cong')}}">Đã thi công</a></li>
             <li><a href="{{url('bao-gia')}}">Báo giá</a></li>
             <li><a href="{{url('tin-tuc')}}">Tin tức</a></li>
             <li><a href="{{url('lien-he')}}">Liên hệ</a></li>

@@ -29,7 +29,7 @@
                 <th class="text-center with_dieuhuong">Stt</th>
                 <th>Hình ảnh</th>
                 <th>Tên</th>
-                <th>Link</th>
+                <!-- <th>Link</th> -->
                 <th class="text-center with_dieuhuong">Sửa</th>
                 <th class="text-center with_dieuhuong">Xóa</th>
               </tr>
@@ -41,7 +41,7 @@
                 <td>{{$key+1}}</td>
                 <td><img src="{{asset('upload/banner/'.$item->photo)}}" class="img_product" alt=""></td>
                 <td>{{$item->name}}</td>    
-                <td>{{$item->url}}</td>            
+                <!-- <td>{{$item->url}}</td>             -->
                                 
                 <td class="text-center with_dieuhuong">
                   <i class="fa fa-pencil fa-fw"></i><a href="{{asset('backend/partner/edit/'.$item->id)}}">Edit</a>

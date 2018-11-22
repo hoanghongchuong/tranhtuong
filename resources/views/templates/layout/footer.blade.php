@@ -35,7 +35,7 @@
             </div>
             <div class="col-md-3 col-xs-12">
                 <div class="title-contact">Fanpage</div>
-                <p></p>
+                <div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-height="225px" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/facebook" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/facebook">Facebook</a></blockquote></div>
             </div>
         </div>
     </div>

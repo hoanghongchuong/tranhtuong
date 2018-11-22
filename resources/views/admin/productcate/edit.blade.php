@@ -106,12 +106,14 @@
 			    	<!-- <div class="form-group">
 					      <label for="ten">Số thứ tự</label>
 					      <input type="number" min="1" name="stt" value="{!! isset($data->stt) ? $data->stt : (count($parent)+1) !!}" class="form-control" style="width: 100px;">
-				    </div>
+				    </div> -->
+				    @if($_GET['type']='san-pham-mau')
 				    <div class="form-group">
 					    <label>
-				        	<input type="checkbox" name="noibat" {!! (!isset($data->noibat) || $data->noibat==1)?'checked="checked"':'' !!}> Nổi bật
+				        	<input type="checkbox" name="noibat" {!! (!isset($data->noibat) || $data->noibat==1)?'checked="checked"':'' !!}> Hiển thị trang chủ
 				    	</label>
-				    </div> -->
+				    </div>
+				    @endif
 				    <div class="form-group">
 					    <label>
 				        	<input type="checkbox" name="status" {!! (!isset($data->status) || $data->status==1)?'checked="checked"':'' !!}> Hiển thị

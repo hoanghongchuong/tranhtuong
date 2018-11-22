@@ -90,21 +90,20 @@ class IndexController extends Controller {
 	 */
 	public function index()
 	{
-		$productHot = DB::table('products')->where('status',1)->where('noibat',1)->take(8)->orderBy('stt','asc')->get();
-		$news = DB::table('news')->where('status',1)->where('noibat',1)->where('com','tin-tuc')->take(20)->orderBy('id','desc')->get();
+		
+		$news = DB::table('news')->where('status',1)->where('noibat',1)->where('com','tin-tuc')->take(2)->orderBy('id','desc')->get();
 		$products = DB::table('products')->where('status',1)->take(20)->orderBy('id','desc')->get();
-		$categories = DB::table('product_categories')->where('status',1)->where('noibat',1)->take(4)->orderBy('stt','asc')->get();
-
-		$category = DB::table('product_categories')->where('status',1)->take(4)->orderBy('id','desc')->get();
-		// dd($category[0]);
-		$setting = Cache::get('setting');
+		$categories_home = DB::table('product_categories')->where('status',1)->where('noibat',1)->take(3)->orderBy('id','desc')->get();
+		$feedbacks = DB::table('feedback')->get();
+		$partners = DB::table('partner')->get();
+		$setting =DB::table('setting')->select()->where('id',1)->get()->first();
 		$title = $setting->title;
 		$keyword = $setting->keyword;
 		$description = $setting->description;		
 		$com = 'index';
 		// End cấu hình SEO
 		$img_share = asset('upload/hinhanh/'.$setting->photo);
-		return view('templates.index_tpl', compact('com','keyword','description','title','img_share','productHot','products','categories','category'));
+		return view('templates.index_tpl', compact('com','keyword','description','title','img_share','partners','products','categories_home','feedbacks','news'));
 	}
 	public function getProduct(Request $req)
 	{
@@ -122,13 +121,23 @@ class IndexController extends Controller {
 		return view('templates.product_tpl', compact('title','keyword','description','products', 'com','cate_pro'));
 	}
 
+	public function getProductOld(Request $req)
+	{
+		
+		$products = DB::table('products')->where('status',1)->where('com','san-pham')->paginate(18);
+		$com='san-pham';		
+		$title = "Sản phẩm đã thi công";
+		$keyword = "Sản phẩm đã thi công";
+		$description = "Sản phẩm đã thi công";
+		return view('templates.product_old', compact('title','keyword','description','products', 'com'));
+	}
+
 	public function getProductList($id, Request $req)
 	{		
 		
 		$cate_pro = DB::table('product_categories')->where('status',1)->where('parent_id',0)->orderby('id','asc')->get();
-		$colors = DB::table('colors')->get();
-        $com = 'san-pham';
-        $product_cate = ProductCate::select('*')->where('status', 1)->where('alias', $id)->first();        
+        $com = 'san-pham-mau';
+        $product_cate = ProductCate::select('*')->where('status', 1)->where('alias', $id)->where('com','san-pham-mau')->first();        
         if (!empty($product_cate)) {            
         	$cate_parent = DB::table('product_categories')->where('id', $product_cate->parent_id)->first();
 
@@ -141,34 +150,8 @@ class IndexController extends Controller {
         		}
         	}        	
         	
-        	
-    		$limit = $req->view ? $req->view : 6;
-    		$sort = $req->sort ? $req->sort : 'asc';
-    		
-    		$price_from = $req->from ? $req->from : 0;
-    		$price_to = $req->to ? $req->to : 100000000;
-        	
-        	$products = DB::table('products')
-        	->where('status', 1)
-        	->orderBy('price', $sort);
 
-        	$appends = [];
-        	if($req->isMethod('GET')){
-        		$products = $products->whereBetween('price', [ $price_from, $price_to])
-        		->where('color_id', 'like', '%' . $req->color . '%');
-        		$viewx  = $req->view;
-        		$sortx  = $req->sort;
-        		$colorx	= $req->color;
-        		$appends = [
-        			'from'  => $price_from,
-        			'to'    => $price_to,
-        			'color' => $colorx,
-        			'view'  => $viewx,
-        			'sort'  => $sortx
-        		];
-        	};
-
-        	$products = $products->whereIn('cate_id', $array_cate)->paginate($limit);
+        	$products = Products::whereIn('cate_id', $array_cate)->orderBy('id','desc')->paginate(18);
             
             if (!empty($product_cate->title)) {
                 $title = $product_cate->title;
@@ -178,7 +161,41 @@ class IndexController extends Controller {
             $keyword = $product_cate->keyword;
             $description = $product_cate->description;
             $img_share = asset('upload/product/' . $product_cate->photo);
-            return view('templates.productlist_tpl', compact('products', 'product_cate', 'viewx', 'keyword', 'description', 'title', 'img_share', 'cate_pro', 'cate_parent', 'com', 'colors','sortx','price_from','price_to', 'appends', 'colorx'));
+            return view('templates.productlist_tpl', compact('products', 'product_cate', 'keyword', 'description', 'title', 'img_share', 'cate_pro', 'cate_parent', 'com'));
+        } else {
+            return redirect()->route('getErrorNotFount');
+        }
+	}
+
+	public function getProductListOld($id)
+	{
+		$cate_pro = DB::table('product_categories')->where('status',1)->where('parent_id',0)->orderby('id','asc')->get();
+        $com = 'san-pham';
+        $product_cate = ProductCate::select('*')->where('status', 1)->where('alias', $id)->where('com','san-pham')->first();        
+        if (!empty($product_cate)) {            
+        	$cate_parent = DB::table('product_categories')->where('id', $product_cate->parent_id)->first();
+
+        	$cateChilds = DB::table('product_categories')->where('parent_id', $product_cate->id)->get();
+        	
+        	$array_cate[] = $product_cate->id;
+        	if($cateChilds){
+        		foreach($cateChilds as $cate){
+        			$array_cate[] = $cate->id;
+        		}
+        	}        	
+        	
+
+        	$products = Products::whereIn('cate_id', $array_cate)->orderBy('id','desc')->paginate(18);
+            
+            if (!empty($product_cate->title)) {
+                $title = $product_cate->title;
+            } else {
+                $title = $product_cate->name;
+            }
+            $keyword = $product_cate->keyword;
+            $description = $product_cate->description;
+            $img_share = asset('upload/product/' . $product_cate->photo);
+            return view('templates.productlist_old', compact('products', 'product_cate', 'keyword', 'description', 'title', 'img_share', 'cate_pro', 'cate_parent', 'com'));
         } else {
             return redirect()->route('getErrorNotFount');
         }
