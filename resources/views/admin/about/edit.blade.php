@@ -35,7 +35,7 @@
 	                  		<div class="row">
 		                  		<div class="col-md-6 col-xs-12">
 		                  			
-									<!-- <div class="form-group @if ($errors->first('fImages')!='') has-error @endif">
+									<div class="form-group @if ($errors->first('fImages')!='') has-error @endif">
 										<div class="form-group">
 											<img src="{{ asset('upload/hinhanh/'.$data->photo) }}" onerror="this.src='{{asset('public/admin_assets/images/no-image.jpg')}}'" class="img-responsive"  alt="NO PHOTO" />
 											<input type="hidden" name="img_current" value="{!! @$data->photo !!}">
@@ -46,12 +46,21 @@
 								    	@if ($errors->first('fImages')!='')
 								      	<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {!! $errors->first('fImages'); !!}</label>
 								      	@endif
-									</div> -->
-									
-							    	<!-- <div class="form-group">
+									</div>
+									<div class="form-group">
+										<div class="form-group">
+											<img src="{{ asset('upload/hinhanh/'.$data->background) }}" onerror="this.src='{{asset('public/admin_assets/images/no-image.jpg')}}'" class="img-responsive"  alt="NO PHOTO" />
+											<input type="hidden" name="img_current_bg" value="{!! @$data->photo !!}">
+										</div>
+										<label for="file">Chọn File ảnh 2</label>
+								     	<input type="file" id="file" name="fImages_bg" >
+								    	<p class="help-block">Width:800px - Height: 326px</p>
+								    	
+									</div>
+							    	<div class="form-group">
 								      	<label for="ten">Tên</label>
 								      	<input type="text" name="txtName" id="txtName" value="{{ @$data->name }}"  class="form-control" />
-									</div> -->
+									</div>
 									
 									<!-- <div class="form-group hidden @if ($errors->first('txtAlias')!='') has-error @endif">
 								      	<label for="alias">Đường dẫn tĩnh</label>
@@ -65,7 +74,7 @@
 								<input type="hidden" name="txtCom" value="{{ old('txtCom', isset($data) ? @$data->com : null) }}">
 								<div class="clearfix"></div>
 								
-								<!-- <div class="col-md-12 col-xs-12">
+								<div class="col-md-12 col-xs-12">
 									<div class="box box-info">
 						                <div class="box-header">                                               
 						                  	<h3 class="box-title">Mô tả</h3>
@@ -78,7 +87,7 @@
 						        			<textarea name="txtDesc" id="txtContent" cols="50" rows="5">{{ @$data->mota }}</textarea>
 						        		</div>
 						        	</div>
-								</div> -->								
+								</div>								
 								<div class="col-md-12 col-xs-12">
 									<div class="box box-info">
 						                <div class="box-header">                                               

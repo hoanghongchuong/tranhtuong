@@ -23,6 +23,7 @@
                
               </ul>
             </li>
+            
             <li><a href="backend/orders"><i class="fa fa-shopping-cart"></i> <span>Quản lý đơn hàng</span></a></li>
             <li><a href="backend/about/edit?type=gioi-thieu"><i class="fa fa-circle-o"></i> <span>Giới thiệu</span></a></li>
             <li><a href="backend/about/edit?type=bao-gia"><i class="fa fa-circle-o"></i> <span>Báo giá</span></a></li>

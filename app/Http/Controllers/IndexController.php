@@ -97,13 +97,14 @@ class IndexController extends Controller {
 		$feedbacks = DB::table('feedback')->get();
 		$partners = DB::table('partner')->get();
 		$setting =DB::table('setting')->select()->where('id',1)->get()->first();
+		$about = DB::table('about')->where('com','gioi-thieu')->first();
 		$title = $setting->title;
 		$keyword = $setting->keyword;
 		$description = $setting->description;		
 		$com = 'index';
 		// End cấu hình SEO
 		$img_share = asset('upload/hinhanh/'.$setting->photo);
-		return view('templates.index_tpl', compact('com','keyword','description','title','img_share','partners','products','categories_home','feedbacks','news'));
+		return view('templates.index_tpl', compact('com','keyword','description','title','img_share','partners','products','categories_home','feedbacks','news','about'));
 	}
 	public function getProduct(Request $req)
 	{

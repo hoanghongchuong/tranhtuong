@@ -12,22 +12,21 @@ $sliders = DB::table('slider')->select()->where('status',1)->where('com','gioi-t
                 <div class="col-md-7">
                     <div class="box-intro_home">
                         <div class="title">
-                            <span class="name_company">Tranh sơn dầu Bạch Vân Mậu</span>
-                            <p class="underline"></p>
+                            <span class="name_company">{{$about->name}}</span>
+                            <p class="underline underx"></p>
                         </div>
                         
                         <div class="short-desc">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. 
+                            {!!$about->mota!!}
                         </div>
                     </div>
                 </div>
                 <div class="col-md-5">
                     <div class="box-img-intro hidden-xs">
-                        <img src="images/img_intro1.png" class="img1">
-                        <img src="images/img_intro2.png" class="img2">
+                        <img src="{{asset('upload/hinhanh/'.$about->photo)}}" class="img1">
+                        <img src="{{asset('upload/hinhanh/'.$about->background)}}" class="img2">
                     </div>
-                    <div class="visible-xs img2x"> <img src="images/img_intro2.png" class=""></div>
+                    <div class="visible-xs img2x"> <img src="{{asset('upload/hinhanh/'.$about->background)}}" class=""></div>
                 </div>
             </div>
         </div>            

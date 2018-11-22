@@ -144,6 +144,17 @@ class AboutController extends Controller
                     File::delete($img_current);
                 }
             }
+            $img_bg = $request->file('fImages_bg');
+            $img_current_bg = 'upload/hinhanh/'.$request->img_current_bg;
+            if(!empty($img_bg)){
+                $path_img='upload/hinhanh';
+                $img_name_bg=time().'_'.$img_bg->getClientOriginalName();
+                $img_bg->move($path_img,$img_name_bg);
+                $data->background = $img_name_bg;
+                if (File::exists($img_current_bg)) {
+                    File::delete($img_current_bg);
+                }
+            }
             $data->name = $request->txtName;
             $data->alias = changeTitle($request->txtName);
             
