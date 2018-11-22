@@ -14,16 +14,33 @@ class ProductCateController extends Controller {
 
 	public function getDanhSach()
     {
-        $data = ProductCate::orderBy('id','desc')->get();
-    	return view('admin.productcate.list', compact('data'));
+        if($_GET['type']=='san-pham-mau') $trang='Sản phẩm mẫu';
+        else if($_GET['type']=='da-lam') $trang='Đã làm';
+        
+        if(!empty($_GET['type'])){
+            $com=$_GET['type'];
+        }else{
+            $com='';
+        }
+        $data = ProductCate::where('com',$com)->orderBy('id','desc')->get();
+        return view('admin.productcate.list', compact('data'));
     }
     public function getAdd()
     {
-        $parent = ProductCate::select('id','name','parent_id')->get()->toArray();
-    	return view('admin.productcate.add', compact('parent'));
+        if($_GET['type']=='san-pham-mau') $trang='Sản phẩm mẫu';
+        else if($_GET['type']=='da-lam') $trang='Đã làm';
+        
+        if(!empty($_GET['type'])){
+            $com=$_GET['type'];
+        }else{
+            $com='';
+        }
+        $parent = ProductCate::select('id','name','parent_id')->where('com',$com)->get()->toArray();
+        return view('admin.productcate.add', compact('parent'));
     }
     public function postAdd(ProductCateRequest $request)
     {
+        $com = $request->txtCom;
         $img = $request->file('fImages');
         $path_img='upload/product';
         $img_name='';
@@ -31,27 +48,31 @@ class ProductCateController extends Controller {
             $img_name=time().'_'.$img->getClientOriginalName();
             $img->move($path_img,$img_name);
         }
-    	$cate = new ProductCate;
-        $cate->parent_id = $request->txtProductCate;
+        $cate = new ProductCate;
+        if($request->txtProductCate){
+            $cate->parent_id = $request->txtProductCate;
+        }
         $cate->name = $request->txtName;
         $cate->alias = changeTitle($request->txtName);
         $cate->photo = $img_name;
+        $cate->com  = $com;
         $cate->title = $request->txtTitle;
         $cate->keyword = $request->txtKeyword;
         $cate->description = $request->description;
         $cate->stt = $request->stt;
-        if($request->noibat=='on'){
-            $product_cate->noibat = 1;
-        }else{
-            $product_cate->noibat = 0;
-        }
+        // if($request->noibat=='on'){
+        //     $product_cate->noibat = 1;
+        // }else{
+        //     $product_cate->noibat = 0;
+        // }
         if($request->status=='on'){
             $cate->status = 1;
         }else{
             $cate->status = 0;
         }
+        // dd($cate);
         $cate->save();
-        return redirect()->route('admin.productcate.index')->with('status','Thêm mới thành công !');
+        return redirect('backend/productcate?type='.$com)->with('status','Thêm mới thành công !');
     }
     public function getEdit(Request $request)
     {
@@ -84,6 +105,11 @@ class ProductCateController extends Controller {
             ["txtName" => "required"],
             ["txtName.required" => "Bạn chưa nhập tên danh mục"]
         );
+        if(!empty($_GET['type'])){
+            $com=$_GET['type'];
+        }else{
+            $com='';
+        }
         $id=$request->get('id');
         $product_cate = ProductCate::find($id);
         if(!empty($product_cate)){
@@ -105,7 +131,8 @@ class ProductCateController extends Controller {
             $product_cate->alias = changeTitle($request->txtName);
             $product_cate->title = $request->txtTitle;
             $product_cate->keyword = $request->txtKeyword;
-            $product_cate->description = $request->description;
+            $product_cate->description = $request->txtDescription;
+            $product_cate->mota = $request->mota;
             $product_cate->stt = $request->stt;
             if($request->noibat=='on'){
                 $product_cate->noibat = 1;
@@ -117,10 +144,8 @@ class ProductCateController extends Controller {
             }else{
                 $product_cate->status = 0;
             }
-
             $product_cate->save();
-
-            return redirect('backend/productcate/edit?id='.$id)->with('status','Cập nhật thành công');
+            return redirect()->back()->with('status','Cập nhật thành công');
         }else{
             return redirect('backend/productcate/')->with('status','Dữ liệu không có thực');
         }

@@ -24,7 +24,7 @@ class BillController extends Controller
         $data = Bill::where('id',$id)->first();
         $data->status = $req->status;
         $data->save();
-        return redirect(route('admin.bill.index'));
+        return redirect(route('admin.bill.index'))->with('status','Cập nhật thành công');
     }
     public function getDelete($id){
     	$order = Bill::find($id);

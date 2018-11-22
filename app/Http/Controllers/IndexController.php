@@ -109,30 +109,17 @@ class IndexController extends Controller {
 	public function getProduct(Request $req)
 	{
 		$cate_pro = DB::table('product_categories')->where('status',1)->where('parent_id',0)->orderby('stt','asc')->get();
-		$productSale = DB::table('products')->select()->where('status',1)->where('spbc',1)->orderBy('id','desc')->take(6)->get();
-
-		// $products = DB::table('products')->select()->where('status', 1);
-		// $appends = [];
-		// $selected = $req->sort;
-		// if ($req->sort) {
-		// 	if (isset($this->sortType[$req->sort])) {
-		// 		$appends['sort'] = $req->sort;
-		// 		$products = $products->orderBy($this->sortType[$req->sort]['order'][0], $this->sortType[$req->sort]['order'][1]);
-		// 	}
-		// }
-		// if (count($appends)) {
-		// 	$products = $products->appends($appends);
-		// }
 		
+		$products = DB::table('products')->where('status',1)->where('com','san-pham-mau')->paginate(18);
 		$com='san-pham';		
-		$title = "Sản phẩm";
-		$keyword = "Sản phẩm";
-		$description = "Sản phẩm";
+		$title = "Sản phẩm mẫu";
+		$keyword = "Sản phẩm mẫu";
+		$description = "Sản phẩm mẫu";
 		// $img_share = asset('upload/hinhanh/'.$banner_danhmuc->photo);
 		
 		// return view('templates.product_tpl', compact('product','banner_danhmuc','doitac','camnhan_khachhang','keyword','description','title','img_share'));
-		view()->share(['sortType' => $this->sortType]);
-		return view('templates.product_tpl', compact('title','keyword','description','products', 'com','cate_pro','tintucs','selected','productSale'));
+		
+		return view('templates.product_tpl', compact('title','keyword','description','products', 'com','cate_pro'));
 	}
 
 	public function getProductList($id, Request $req)
@@ -232,10 +219,7 @@ class IndexController extends Controller {
 			$album_hinh = DB::table('images')->select()->where('product_id',$product_detail->id)->orderby('id','asc')->get();		
 			$cateProduct = DB::table('product_categories')->select('name','alias')->where('id',$product_detail->cate_id)->first();
 			$productSameCate = DB::table('products')->select()->where('status',1)->where('id','<>',$product_detail->id)->where('cate_id',$product_detail->cate_id)->orderby('stt','desc')->take(20)->get();			
-			$colorId = json_decode($product_detail->color_id);
-			$colors = DB::table('colors')->whereIn('id', $colorId)->get();
-
-			$tintucs = DB::table('news')->orderBy('id','desc')->take(3)->get();
+			
 			// Cấu hình SEO
 			if(!empty($product_detail->title)){
 				$title = $product_detail->title;
@@ -466,18 +450,17 @@ class IndexController extends Controller {
 
 	public function addCart(Request $req)
 	{
-		$data = $req->only('product_id','product_numb', 'color');
+		$data = $req->only('product_id','product_numb');
 		$product = DB::table('products')->select()->where('status',1)->where('id',$data['product_id'])->first();
 		if (!$product) {
 			die('product not found');
 		}
-		// dd($data['product_numb']);
 		Cart::add(array(
 				'id'=>$product->id,
 				'name'=>$product->name,
 				'qty'=>$data['product_numb'],
 				'price'=>$product->price,
-				'options'=>array('photo'=>$product->photo,'color'=>$data['color'])));
+				'options'=>array('photo'=>$product->photo)));
 		return redirect(route('getCart'));
 	}
 	public function addCartAjax(Request $req)

@@ -24,7 +24,7 @@
         	
         	<form name="frmAdd" method="post" action="{!! route('admin.newscate.postAdd') !!}" enctype="multipart/form-data">
         		<input type="hidden" name="_token" value="{!! csrf_token() !!}" />
-	      		
+	      		<input type="hidden" name="txtCom" value="{{ @$_GET['type'] }}"/>
       			<div class="nav-tabs-custom">
 	                <ul class="nav nav-tabs">
 	                  	<li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="false">Thông tin chung</a></li>
@@ -71,7 +71,7 @@
 								      	<textarea name="txtDesc" rows="5" class="form-control"></textarea>
 									</div>
 									@endif
-									<input type="hidden" name="txtCom" value="{{ @$_GET['type'] }}"/>
+									
 								</div>
 								<div class="col-md-6 col-xs-12">
 									<div class="col-md-6 col-xs-12">

@@ -5,212 +5,147 @@
     $about = Cache::get('about');
     $quangcao = DB::table('lienket')->where('com','quang-cao')->get();
 ?>
-<section class="vk-content">
-    <div class="vk-breadcrumb">
-        <nav class="container">
-            <ul class="vk-list vk-list--inline vk-breadcrumb__list">
-                <li class="vk-list__item"><a href="{{url('')}}"><i class="vk-icon fa fa-home"></i> Trang chủ</a></li>
-                <!-- <li class="vk-list__item"><a href="shop-list.html">Phòng</a></li> -->
-
-                <li class="vk-list__item"><a href="{{url('san-pham/'.$cateProduct->alias)}}">{{$cateProduct->name}}</a></li>
-
-                <li class="vk-list__item active">{{$product_detail->name}}</li>
-            </ul>
-        </nav>
-    </div>
-    <!--./vk-breadcrumb-->    
-    <div class="container">
-
-        <div class="vk-shop-detail__top">
+<div class="content-box content-box-page">
+    <nav aria-label="breadcrumb" class="nav-breadcrumb">
+        <div class="container">
             <div class="row">
-                <div class="col-lg-6 ">
-                    <div class="vk-shop-detail__thumbnail">
-                        <div class="vk-slider slider-for">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{url('')}}">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="#">Sản phẩm mẫu</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{$product_detail->name}}</li>
+                </ol>
+            </div>
+        </div>
+    </nav>
+    <div class="list-category">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="album-image slider_product">
+                        <div class="slider-for">
                             @if(count($album_hinh) > 0)
-                            @foreach($album_hinh as $k=>$a)
-                            <div class="_item">
-                                <a href="#" class="vk-img vk-img--mw100">
-                                    <img src="{{asset('upload/hasp/'.$a->photo)}}" alt="">
-                                </a>
-                            </div>
-                            @endforeach
-                            @else 
-                            <div class="_item">
-                                <a href="#" class="vk-img vk-img--mw100">
-                                    <img src="{{asset('upload/product/'.$product_detail->photo)}}" alt="">
-                                </a>
-                            </div>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="vk-shop-detail__thumbnail-slider">
-                        <div class="vk-slider slider-nav">
-                            @if(count($album_hinh) > 0)
-                            @foreach($album_hinh as $k=>$a)
-                            <div class="_item">
-                                <div class="vk-img  vk-img--cover">
-                                    <img src="{{asset('upload/hasp/'.$a->photo)}}" alt="">
+                            @foreach($album_hinh as $album)
+                                <div class="item">
+                                    <img src="{{asset('upload/hasp/'.$album->photo)}}" alt="image" class="img-responsive"  draggable="false"/>
                                 </div>
-                            </div>
                             @endforeach
-                            @else 
-                            <div class="_item">
-                                <div class="vk-img  vk-img--cover">
-                                    <img src="{{asset('upload/product/'.$product_detail->photo)}}" alt="">
+                            @else
+                                <div class="item">
+                                    <img src="{{asset('upload/product/'.$product_detail->photo)}}" alt="image" class="img-responsive"  draggable="false"/>
                                 </div>
-                            </div>
                             @endif
                         </div>
 
+                        <div class="slider-nav">
+                            @if(count($album_hinh) > 0)
+                                @foreach($album_hinh as $album)
+                                <div class="item">
+                                    <img src="{{asset('upload/hasp/'.$album->photo)}}" alt="image" class="img-responsive"  draggable="false"/>
+                                </div>
+                            @endforeach
+                            @else
+                                <div class="item">
+                                    <img src="{{asset('upload/product/'.$product_detail->photo)}}" alt="image" class="img-responsive"  draggable="false"/>
+                                </div>
+                            @endif
+                        </div>
                     </div>
-                </div> <!--./col-->
-                <div class="col-lg-6 pt-5 pt-lg-0">
-                    <h1 class="vk-shop-detail__title">{{$product_detail->name}}</h1>
-                    <div class="vk-shop-detail__status">Tình trạng: @if($product_detail->tinhtrang == 1) Còn hàng @else Hết hàng @endif</div>
 
-                    <div class="vk-shop-detail__price-box">
-                        <span class="_main">{{number_format($product_detail->price)}} đ</span>
-                        @if($product_detail->price < $product_detail->price_old)
-                        <span class="_old">Giá cũ: {{number_format($product_detail->price_old)}} đ</span>
-                        @endif
-                    </div>
-
-                    <div class="vk-shop-detail__short-des">
+                    <h1 class="name-product">{{$product_detail->name}}</h1>
+                    <p class="code_product">Mã sản phẩm: {{$product_detail->code}}</p>
+                    <p class="price_product">Giá: {{number_format($product_detail->price)}} vnđ</p>
+                    @if($product_detail->price < $product_detail->price_old)
+                    <p class="price_old">Giá cũ: {{number_format($product_detail->price_old)}} vnđ</p>
+                    @endif
+                    <div class="short-des-product">
                         {!! $product_detail->mota !!}
                     </div>
-                <form action="{{ route('addProductToCart') }}" method="post">
-                    {{csrf_field()}}                    
-                    <input type="hidden" value="{{ $product_detail->id }}" name="product_id">    
+                    <div class="buy">
+                        <form action="{{route('addProductToCart')}}" method="post" accept-charset="utf-8">
+                            {{csrf_field()}}
+                            <input type="hidden" name="product_id" value="{{$product_detail->id}}" placeholder="">
+                            <span>Số lượng: <input type="number" name="product_numb" value="1" min="1" class="number_product"></span>
+                            <button type="submit" class=" btn-order"><i class="fa fa-cart-plus"></i> Đặt mua</button>
+                           
+                        </form>
 
-                    <div class="vk-shop-detail__color">
-                        <p><b>Màu sắc</b></p>
-                        <ul class="vk-list vk-list--inline vk-shop-detail__color-list">
-                            @foreach($colors as $color)
-                            <li class="vk-list__item">
-                                <label >
-                                    <input type="radio" name="color"  value="{{ $color->id }}">
-                                    <span class="_color1" style="background-color: {{ $color->code  }}"></span>
-                                </label>
-                            </li>
-                            @endforeach                            
+                    </div>
+                    <div class="info-comment">
+                        <div id="exTab1" class=""> 
+                            <ul  class="nav nav-pills">
+                                <li class="active">
+                                <a  href="#1a" data-toggle="tab">Thông tin chi tiết</a>
+                                </li>
+                                <li><a href="#2a" data-toggle="tab">Bình luận</a>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content clearfix">
+                                <div class="tab-pane active" id="1a">
+                                    {!! $product_detail->content !!}
+                                </div>
+                                <div class="tab-pane" id="2a">
+                                    <div class="fb-comments" data-href="{{URL::Current()}}" data-width="100%" data-numposts="2"></div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="list_category_product">
+                        <p class="title_cate">
+                            Dự án đã thực hiện
+                        </p>
+                        <ul class="">
+                            <li><a href="">Vẽ tranh tường 3D</a></li>
+                            <li><a href="">Vẽ tranh tường 3D Nghệ thuật</a></li>
+                            <li><a href="">Vẽ tranh tường mầm non</a></li>
+                            <li><a href="">Vẽ tranh tường quán trà sữa</a></li>
+                            <li><a href="">Vẽ tranh tường phòng khách</a></li>
+                            <li><a href="">Vẽ tranh tường phòng ngủ</a></li>
+                            <li><a href="">Vẽ tranh tường quán cafe</a></li>
+                            <li><a href="">Vẽ tranh tường quán karaoke</a></li>
+                            <li><a href="">Vẽ tranh tường phòng em bé</a></li>
                         </ul>
                     </div>
-                    <div class="vk-shop-detail__button">
-                        <p>Số lượng</p>
-                        <div class="vk-shop-detail__button-content">
-                            <div class="vk-calculator" data-calculator="true">
-                                <input type="number" name="product_numb" value="1" min="1" class="form-control order-2">
-                                <a href="#" class="vk-calculator__button vk-btn vk-btn--minus order-1"
-                                   data-index="minus">
-                                    <i class="_icon fa fa-minus"></i>
-                                </a>
-                                <a href="#" class="vk-calculator__button vk-btn vk-btn--plus order-3" data-index="plus">
-                                    <i class="_icon fa fa-plus"></i>
-                                </a>
-                            </div>
-                            <!-- <a href="#" class="vk-btn vk-btn--grey-6">Thêm vào giỏ</a> -->
-                            <button class="vk-btn vk-btn--grey-6">Thêm vào giỏ</button>
-                        </div>
-                    </div> <!--./button-->
-                </form>
-                </div> <!--./col-->
-            </div> <!--./row-->
-        </div> <!--./top-->
-        <div class="vk-shop-detail__bot ">
-            <div class="row">
-                <div class="col-lg-9">
-                    <h2 class="vk-shop-detail__title-sub vk-heading vk-heading--style-1">Thông tin sản phẩm</h2>
-                    <div class="vk-shop-detail__des">
-                        {!! $product_detail->content !!}
-                    </div> <!--./description-->
-                </div> <!--./col-->
-                <div class="col-lg-3 pt-5 pt-lg-0">
-                    @foreach($quangcao as $qc)
-                    <div class="vk-ads mb-3">
-                        <img src="{{ asset('upload/hinhanh/'.$qc->photo)}}" alt="" class="mw-100">
+                    <div class="list_category_product">
+                        <p class="title_cate">
+                            Sản phẩm mẫu
+                        </p>
+                        <ul class="">
+                            <li><a href="">Vẽ tranh tường 3D</a></li>
+                            <li><a href="">Vẽ tranh tường 3D Nghệ thuật</a></li>
+                            <li><a href="">Vẽ tranh tường mầm non</a></li>
+                            <li><a href="">Vẽ tranh tường quán trà sữa</a></li>
+                            <li><a href="">Vẽ tranh tường phòng khách</a></li>
+                            <li><a href="">Vẽ tranh tường phòng ngủ</a></li>
+                            <li><a href="">Vẽ tranh tường quán cafe</a></li>
+                            <li><a href="">Vẽ tranh tường quán karaoke</a></li>
+                            <li><a href="">Vẽ tranh tường phòng em bé</a></li>
+                        </ul>
                     </div>
-                    @endforeach
-                    
-                </div> <!--./col-->
-            </div> <!--./row-->
-
-        </div> <!--./bot-->
-        <div class="vk-shop__relate mt-5">
-            <h2 class="vk-shop-detail__title-sub vk-heading vk-heading--style-1">Sản phẩm liên quan</h2>
-            <div class="vk-shop__list vk-slider" data-slider="relate">
-                @foreach($productSameCate as $item)
-                <div class="col-sm-6 col-md-4 _item">
-                    <div class="vk-shop-item vk-shop-item--style-3">
-                        <a href="{{ url('san-pham/'.$item->alias.'.html') }}" title="{{$item->name}}" class="vk-img vk-img--mw100 ">
-                            <img src="{{asset('upload/product/'.$item->photo)}}" alt="{{$item->name}}" class="vk-img__img">
-                            <span class="_sale">- {{ round(100-($item->price / $item->price_old)*100) }} %</span>
-                        </a>
-                        <div class="vk-shop-item__brief">
-                            <h3 class="vk-shop-item__title"><a href="{{ url('san-pham/'.$item->alias.'.html') }}" title="{{$item->name}}">{{$item->name}}</a></h3>
-                            <div class="vk-shop-item__price">{{number_format($item->price)}} đ <span class="_old">{{number_format($item->price_old)}} đ</span></div>
-                            <div class="vk-shop-item__button">
-                                <a href="#" class="vk-btn vk-btn--grey-1" title="Thêm vào giỏ"><img src="{{ asset('public/images/icon-3.png')}}" alt=""></a>
-                                <a href="{{ url('san-pham/'.$item->alias.'.html') }}" class="vk-btn vk-btn--grey-1" title="Xem thêm"><i class="ti-search"></i></a>
-                            </div>
-                        </div>
-                    </div> <!--./vk-shop-item-->
-                </div>
-                @endforeach    
-                
-            </div> <!--./list-->
-        </div> <!--./relate-->
-
-        <div class="vk-shop__relate mt-5">
-            <h2 class="vk-shop-detail__title-sub vk-heading vk-heading--style-1">Sản phẩm đã xem</h2>
-            <div class="vk-shop__list vk-slider" data-slider="relate">
-                @foreach($productDaXem as $item)
-                <div class="col-sm-6 col-md-4 _item">
-                    <div class="vk-shop-item vk-shop-item--style-3">
-                        <a href="{{ url('san-pham/'.$item->alias.'.html') }}" title="{{$item->name}}" class="vk-img vk-img--mw100 ">
-                            <img src="{{asset('upload/product/'.$item->photo)}}" alt="{{$item->name}}" class="vk-img__img">
-                            <span class="_sale">- {{ round(100-($item->price / $item->price_old)*100) }} %</span>
-                        </a>
-                        <div class="vk-shop-item__brief">
-                            <h3 class="vk-shop-item__title"><a href="{{ url('san-pham/'.$item->alias.'.html') }}" title="{{$item->name}}">{{$item->name}}</a></h3>
-                            <div class="vk-shop-item__price">{{number_format($item->price)}} đ <span class="_old">{{number_format($item->price_old)}} đ</span></div>
-                            <div class="vk-shop-item__button">
-                                <a href="#" class="vk-btn vk-btn--grey-1" title="Thêm vào giỏ"><img src="{{ asset('public/images/icon-3.png')}}" alt=""></a>
-                                <a href="{{ url('san-pham/'.$item->alias.'.html') }}" class="vk-btn vk-btn--grey-1" title="Xem thêm"><i class="ti-search"></i></a>
-                            </div>
-                        </div>
-                    </div> <!--./vk-shop-item-->
-                </div>
-                @endforeach    
-                
-            </div> <!--./list-->
-        </div> <!--./relate-->
-
-    </div> <!--./container-->
-
-
-    <div class="vk-map">
-        <div class="vk-map__img">
-            <img src="{{ asset('public/images/map.jpg')}}" alt="">
-        </div>
-
-        <div class="vk-map__main">
-            <div class="container">
-                <div class="vk-map__wrapper">
-                    <div class="vk-map__content">
-                        <h2 class="vk-map__title">HỆ THỐNG CỦA HÀNG VIDCOM</h2>
-                        <div class="vk-map__text">
-                            Vidcom hiện đang sở hữu hệ thống 16 Siêu thị Nội Thất và Trang Trí tại hai thành phố chính
-                            của
-                            Việt Nam là Hà Nội và TP.Hồ Chí Minh.
-                        </div>
-                        <a href="{{url('cua-hang')}}" class="vk-btn vk-btn--white vk-map__btn">Xem hệ thống cửa hàng</a>
+                    <div class="list_category_product">
+                        <p class="title_cate">
+                            Tin nổi bật
+                        </p>
+                        <ul class="">
+                            <li><a href="">Vẽ tranh tường 3D</a></li>
+                            <li><a href="">Vẽ tranh tường 3D Nghệ thuật</a></li>
+                            <li><a href="">Vẽ tranh tường mầm non</a></li>
+                            <li><a href="">Vẽ tranh tường quán trà sữa</a></li>
+                            <li><a href="">Vẽ tranh tường phòng khách</a></li>
+                            <li><a href="">Vẽ tranh tường phòng ngủ</a></li>
+                            <li><a href="">Vẽ tranh tường quán cafe</a></li>
+                            <li><a href="">Vẽ tranh tường quán karaoke</a></li>
+                            <li><a href="">Vẽ tranh tường phòng em bé</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </div> <!--./map-->
-
-</section>
+    </div>
+</div>
 
 
 

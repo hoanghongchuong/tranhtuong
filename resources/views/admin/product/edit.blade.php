@@ -22,7 +22,7 @@
         <div class="box-body">
         	<form method="post" name="frmEditProduct" action="backend/product/edit?id={{$id}}" enctype="multipart/form-data">
         		<input type="hidden" name="_token" value="{!! csrf_token() !!}" />
-        		
+        		<input type="hidden" name="txtCom" value="{{ @$_GET['type'] }}"/>
       			<div class="nav-tabs-custom">
 	                <ul class="nav nav-tabs">
 	                  	<li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="false">Thông tin chung</a></li>
@@ -79,54 +79,18 @@
 								      	<label for="ten">Giá cũ</label>
 								      	<input type="text" name="txtPriceOld" onkeyup="FormatNumber(this);"  onKeyPress="return isNumberKey(event)" value="{{ number_format($data->price_old,0,'',',') }}"  class="form-control" />
 									</div>
-									<!-- <div class="form-group">
-								      	<label for="alias">Ghi chú</label>
-								      	
-								      	<textarea name="txtHuongdan" rows="5" id="txtContent" class="form-control">{{ $data->huongdan }}</textarea>
-									</div> -->
-									<style>
-										.list-color{
-											/*display: inline-block;*/
-											float: left;
-											width:50px;
-											margin-right: 10px;
-										}
-										.list-color span{
-											display: table-cell;
-										    width: 43px;
-										    height: 34px;
-										    padding: 0px 20px;
-										    margin-right: 5px;
-										}
-										
-										.box-color{
-											padding-right: 20px;
-										}
-									</style>
 									<div class="form-group">
-										<p><label for="">Chọn màu:</label></p>
-											@foreach($colors as $color)
-											<div class="input-group list-color">
-						                      <div class="input-group-addon box-color">
-												
-						                        <input type="checkbox" name="colors[]" value="{{$color->id}}" @if(in_array($color->id, $color_product)) checked="" @endif class="minimal">
-						                       
-						                      </div>
-						                      <span style="background-color: {{$color->code}};"></span>
-						                    </div>											
-											@endforeach
-									</div>
-								</div>
-								<div class="col-md-6 col-xs-12">
-									<!-- <div class="form-group">
 								      	<label for="ten">Mã SP</label>
 								      	<input type="text" name="txtCode"  value="{{ $data->code }}"  class="form-control" />
-									</div> -->
+									</div>
+								</div>								
+							</div>
+							<div class="row">
+								<div class="col-md-12 col-xs-12">									
 									<div class="form-group">
 								      	<label for="desc">Mô tả</label>
 								      	<textarea name="txtDesc" rows="5" id="txtContent" class="form-control">{{ $data->mota }}</textarea>
-									</div>
-									
+									</div>									
 								</div>
 							</div>
 							<div class="clearfix"></div>
@@ -206,7 +170,7 @@
 	            </div>
 	            <div class="clearfix"></div>
 			    <div class="col-md-6">
-			    	<div class="form-group">
+			    	<div class="form-group hidden">
 					      <label for="ten">Số thứ tự</label>
 					      <input type="number" min="1" name="stt" value="{!! isset($data->status) ? $data->stt : (count($product)+1) !!}" class="form-control" style="width: 100px;">
 				    </div>
@@ -216,7 +180,7 @@
 				        	<input type="checkbox" name="status" {!! (!isset($data->status) || $data->status==1)?'checked="checked"':'' !!}> Hiển thị
 				    	</label>
 				    </div>
-				    <div class="form-group">
+				    <!-- <div class="form-group">
 					    <label>
 				        	<input type="checkbox" name="tinhtrang" {!! (!isset($data->tinhtrang) || $data->tinhtrang==1)?'checked="checked"':'' !!}> Còn hàng
 				    	</label>
@@ -225,7 +189,7 @@
 					    <label>
 				        	<input type="checkbox" name="noibat" {!! (!isset($data->noibat) || $data->noibat==1)?'checked="checked"':'' !!}> Nổi bật
 				    	</label>
-				    </div>
+				    </div> -->
 				    <!-- <div class="form-group">
 					    <label>
 				        	<input type="checkbox" name="spbc" {!! (!isset($data->spbc) || $data->spbc==1)?'checked="checked"':'' !!}> Sale off
@@ -237,7 +201,7 @@
 			    	<div class="row">
 						<div class="col-md-6">
 					    	<button type="submit" class="btn btn-primary">Cập nhật</button>
-					    	<button type="button" class="btn btn-danger" onclick="javascript:window.location='backend/product'">Thoát</button>
+					    	<!-- <button type="button" class="btn btn-danger" onclick="javascript:window.location='backend/product'">Thoát</button> -->
 				    	</div>
 			    	</div>
 			  	</div>
@@ -246,64 +210,5 @@
     </div><!-- /.box -->
     
 </section><!-- /.content -->
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-	    <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal">&times;</button>
-	        <h4 class="modal-title">Thêm hình ảnh liên quan</h4>
-	    </div>
-      	<div class="modal-body">
-      		<!-- <div class="container">
-			    <div class="row">
-			        <div class="col-md-12">
-			            <h1>Upload Multiple Images using dropzone.js and Laravel</h1>
-			            {!! Form::open([ 'route' => [ 'dropzone.store' ], 'files' => true, 'enctype' => 'multipart/form-data', 'class' => 'dropzone', 'id' => 'image-upload' ]) !!}
-			            <div>
-			                <h3>Upload Multiple Image By Click On Box</h3>
-			            </div>
-			            {!! Form::close() !!}
-			        </div>
-			    </div>
-			</div>
-
-			<script type="text/javascript">
-			        Dropzone.options.imageUpload = {
-			            maxFilesize         :       1,
-			            acceptedFiles: ".jpeg,.jpg,.png,.gif"
-			        };
-			</script> -->
-      		<div class="row">
-		        <div class="col-md-12">
-		        
-			        <form method="post" id="upload" action="{{ route('admin.uploadImg') }}" enctype="multipart/form-data">
-			        	<input type="hidden" name="_token" value="{!! csrf_token() !!}" />
-			            <div class="row">
-			                <div class="col-md-4">
-			                    <div id="drop">
-			                        Kéo thả hình vào đây
-
-			                        <a>Chọn</a>
-			                        <input type="file" name="upl" multiple />
-			                    </div>
-			                </div>
-			                <div class="col-md-8">
-			                    <ul id="list_uploaded">
-			                    </ul>
-			                </div>
-			            </div>
-			        </form>
-		        </div>
-		    </div>
-      	</div>
-      	<div class="modal-footer">
-        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      	</div>
-    </div>
-
-  </div>
-</div>
 @endsection()

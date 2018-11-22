@@ -39,11 +39,11 @@
                                 <a href="{{url('gioi-thieu')}}"><span><img src="{{asset('public/images/i_menu1.png')}}"></span>Giới thiệu</a>
                             </li>
                             <li>
-                                <a href=""><span><img src="{{asset('public/images/i_menu2.png')}}"></span>Sản phẩm mẫu</a>
+                                <a href="{{url('san-pham-mau')}}"><span><img src="{{asset('public/images/i_menu2.png')}}"></span>Sản phẩm mẫu</a>
                             </li>
                            
                             <li>
-                                <a href=""><span><img src="{{asset('public/images/i_menu3.png')}}"></span>Đã thi công</a>
+                                <a href="{{url('da-thi-cong')}}"><span><img src="{{asset('public/images/i_menu3.png')}}"></span>Đã thi công</a>
                                 
                             </li>
                             <li>

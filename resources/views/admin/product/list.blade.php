@@ -87,23 +87,10 @@
                       <a href="backend/product/edit?id={{$item->id}}&hienthi={{ time() }}" class="btn btn-danger btn-xs"><i class="fa fa-eye"></i> Hiển thị</a>
                     @endif
                   </div>
-                  <div class="form-group"> 
-                    @if($item->noibat>0)
-                      <a href="backend/product/edit?id={{$item->id}}&noibat={{ time() }}" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i> Nổi bật</a>
-                    @else
-                      <a href="backend/product/edit?id={{$item->id}}&noibat={{ time() }}" class="btn btn-danger btn-xs"><i class="fa fa-eye"></i> Nổi bật</a>
-                    @endif
-                  </div>
-                  <div class="form-group"> 
-                    @if($item->spbc>0)
-                      <a href="backend/product/edit?id={{$item->id}}&spbc={{ time() }}" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i> Bán chạy</a>
-                    @else
-                      <a href="backend/product/edit?id={{$item->id}}&spbc={{ time() }}" class="btn btn-danger btn-xs"><i class="fa fa-eye"></i> Bán chạy</a>
-                    @endif
-                  </div>
+                  
                 </td>
                 <td class="text-center with_dieuhuong">
-                  <i class="fa fa-pencil fa-fw"></i><a href="backend/product/edit?id={{$item->id}}">Edit</a>
+                  <i class="fa fa-pencil fa-fw"></i><a href="backend/product/edit?id={{$item->id}}&type={{ @$_GET['type'] }}">Edit</a>
                 </td>
                 <td class="text-center">
                   <i class="fa fa-trash-o fa-fw"></i><a onClick="if(!confirm('Xác nhận xóa')) return false;" href="backend/product/{{$item->id}}/delete">Delete</a>
@@ -116,7 +103,7 @@
         <div class="box-footer col-md-12">
           <div class="row">
             <div class="col-md-6">
-              <input type="button" onclick="javascript:window.location='backend/product/add'" value="Thêm" class="btn btn-primary" />
+              <input type="button" onclick="javascript:window.location='backend/product/add?type={{ @$_GET[type] }}'" value="Thêm" class="btn btn-primary" />
               <button type="button" id="xoahet" class="btn btn-success">Xóa</button>
               <input type="button" value="Thoát" onclick="javascript:window.location='backend'" class="btn btn-danger" />
 

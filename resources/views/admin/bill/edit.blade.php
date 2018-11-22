@@ -61,13 +61,13 @@
 											<textarea name="" id="" cols="100" rows="5">{{$data->note}}</textarea>
 										</div>
 									</div>
-									<div class="form-group">
+									<!-- <div class="form-group">
 								      	<label for="txtAddress">Phương thức thanh toán</label>
 								      	<input type="text"  disabled value="<?php 
 								      		if($data->payment ==0)  echo "Thanh toán khi giao hàng";  
 								      		if($data->payment == 1) echo "Chuyển khoản qua ngân hàng"; 
 								      	?>"  class="form-control" />
-									</div>
+									</div> -->
 									<div class="form-group">
 								      	<label for="ten">Tình trạng đơn hàng</label>
 								      	<select name="status" class="form-control">
@@ -94,7 +94,6 @@
 					                <th>Tên sản phẩm</th>
 					                <th>Hình ảnh</th>
 					                <th>Số lượng</th>
-					                <th>Màu</th>
 					                <th>Đơn giá</th>
 					                <th>Tổng tiền</th>
 					              </tr>
@@ -107,9 +106,7 @@
 					                <td>{{$dt->product_name}}</td>
 					                <td><img src="{{asset('upload/product/'.$dt->product_img)}}" width="100px" height="100px" alt=""></td>
 					                <td>{{$dt->product_numb}}</td>
-									<?php $color = DB::table('colors')->where('id', $dt->product_code)->first(); ?>
-					                <td><span style="width: 30px; height: 30px; background: {{ $color->code }}; display: block"></span></td>
-
+									
 					                <td>{{ number_format($dt->product_price) }}</td>
 					                <td>{{ number_format($dt->product_numb * $dt->product_price) }}</td>
 					              </tr>

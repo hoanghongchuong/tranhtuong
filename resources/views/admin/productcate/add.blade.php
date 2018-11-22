@@ -24,7 +24,7 @@
         	
         	<form name="frmAdd" method="post" action="{!! route('admin.productcate.postAdd') !!}" enctype="multipart/form-data">
         		<input type="hidden" name="_token" value="{!! csrf_token() !!}" />
-	      		
+	      		<input type="hidden" name="txtCom" value="{{ @$_GET['type'] }}"/>
       			<div class="nav-tabs-custom">
 	                <ul class="nav nav-tabs">
 	                  	<li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="false">Thông tin chung</a></li>
@@ -34,15 +34,15 @@
 	                  	<div class="tab-pane active" id="tab_1">
 	                  		<div class="row">
 		                  		<div class="col-md-6 col-xs-12">
-		                  			<div class="form-group col-md-12 @if ($errors->first('fImages')!='') has-error @endif">
+		                  			<!-- <div class="form-group col-md-12 @if ($errors->first('fImages')!='') has-error @endif">
 										<label for="file">File ảnh</label>
 								     	<input type="file" id="file" name="fImages" >
 								    	<p class="help-block">Width:225px - Height: 162px</p>
 								    	@if ($errors->first('fImages')!='')
 								      	<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {!! $errors->first('fImages'); !!}</label>
 								      	@endif
-									</div>
-			                    	<div class="form-group">
+									</div> -->
+			                    	<div class="form-group hidden">
 								      	<label for="ten">Danh mục cha</label>
 								      	<select name="txtProductCate" class="form-control">
 								      		<option value="0">Chọn danh mục</option>
@@ -64,10 +64,13 @@
 								      	<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {!! $errors->first('txtAlias'); !!}</label>
 								      	@endif
 									</div>
-									<!-- <div class="form-group">
+									
+								</div>
+								<div class="col-md-12 col-xs-12">
+									<div class="form-group">
 										<label for="">Mô tả</label>
 										<textarea name="description" rows="5" id="txtContent" class="form-control"></textarea>
-									</div> -->
+									</div>
 								</div>
 							</div>
 							<div class="clearfix"></div>
@@ -95,7 +98,7 @@
 	            </div>
 	            <div class="clearfix"></div>
 			    <div class="col-md-6">
-			    	<div class="form-group">
+			    	<!-- <div class="form-group">
 					      <label for="ten">Số thứ tự</label>
 					      <input type="number" min="1" name="stt" value="{!! count($parent)+1 !!}" class="form-control" style="width: 100px;">
 				    </div>
@@ -103,7 +106,7 @@
 					    <label>
 				        	<input type="checkbox" name="noibat"> Nổi bật
 				    	</label>
-				    </div>
+				    </div> -->
 				    <div class="form-group">
 					    <label>
 				        	<input type="checkbox" name="status" checked="checked"> Hiển thị

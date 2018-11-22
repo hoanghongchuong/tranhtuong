@@ -396,7 +396,7 @@ footer .left{
 	padding: 10px;
 	position: absolute;
 	bottom: 0;
-	
+	width: 100%;
 }
 .name_cate a{
 	color: #fff;
@@ -559,4 +559,10 @@ footer .left{
 	color: #fff;
 	padding: 10px;
 	text-transform: uppercase;
+}
+.btn-update-cart{
+	background: #E54725;
+	color: #fff;
+	border-radius: 0px;
+	height: 36px;
 }

@@ -23,7 +23,7 @@
         	
         	<form name="frmAdd" method="post" action="{!! route('admin.product.postAdd') !!}" enctype="multipart/form-data">
         		<input type="hidden" name="_token" value="{!! csrf_token() !!}" />
-	      		
+	      		<input type="hidden" name="txtCom" value="{{ @$_GET['type'] }}"/>
       			<div class="nav-tabs-custom">
 	                <ul class="nav nav-tabs">
 	                  	<li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="false">Thông tin chung</a></li>
@@ -83,40 +83,7 @@
 								      	<input type="text" name="txtPriceOld"  onkeyup="FormatNumber(this);"  onKeyPress="return isNumberKey(event)" value=""  class="form-control" />
 									</div>
 									
-									<style>
-										.list-color{
-											/*display: inline-block;*/
-											float: left;
-											width:50px;
-											margin-right: 10px;
-										}
-										.list-color span{
-											display: table-cell;
-										    width: 43px;
-										    height: 34px;
-										    padding: 0px 20px;
-										    margin-right: 5px;
-										}
-										
-										.box-color{
-											padding-right: 20px;
-										}
-									</style>
-									<div class="form-group">
-										<p><label for="">Chọn màu:</label></p>
-											@foreach($colors as $color)
-											<div class="input-group list-color">
-						                      <div class="input-group-addon box-color">
-						                        <input type="checkbox" name="colors[]" value="{{$color->id}}" class="minimal">
-						                      </div>
-						                      <span style="background-color: {{$color->code}};"></span>
-						                    </div>											
-											@endforeach
-									</div>
-									<!-- <div class="form-group">
-								      	<label for="alias">Ghi chú</label>
-								      	<textarea name="txtHuongdan" rows="5" id="txtContent" class="form-control"></textarea>
-									</div> -->
+									
 								</div>
 								<div class="col-md-6 col-xs-12">
 									<div class="form-group">
@@ -127,10 +94,10 @@
 								
 							</div>
 							<div class="col-md-6 col-xs-12">								
-								<!-- <div class="form-group">
+								<div class="form-group">
 							      	<label for="ten">Mã SP</label>
 							      	<input type="text" name="txtCode"  value=""  class="form-control" />
-								</div> -->							
+								</div>							
 								
 							</div>
 							
@@ -187,7 +154,7 @@
 				        	<input type="checkbox" name="status" checked="checked"> Hiển thị
 				    	</label>
 				    </div>
-				    <div class="form-group">
+				    <!-- <div class="form-group">
 					    <label>
 				        	<input type="checkbox" name="tinhtrang" checked="checked"> Còn hàng
 				    	</label>
@@ -196,7 +163,7 @@
 					    <label>
 				        	<input type="checkbox" name="noibat"> Nổi bật
 				    	</label>
-				    </div>
+				    </div> -->
 				    <!-- <div class="form-group">
 					    <label>
 				        	<input type="checkbox" name="spbc"> Sale off

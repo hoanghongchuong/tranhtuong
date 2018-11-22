@@ -23,6 +23,7 @@
         <div class="box-body">
         	<form method="post" action="backend/productcate/edit?id={{$id}}" enctype="multipart/form-data">
         		<input type="hidden" name="_token" value="{!! csrf_token() !!}" />
+        		<input type="hidden" name="txtCom" value="{{ @$_GET['type'] }}"/>
       			<div class="nav-tabs-custom">
 	                <ul class="nav nav-tabs">
 	                  	<li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="false">Thông tin chung</a></li>
@@ -32,7 +33,7 @@
 	                  	<div class="tab-pane active" id="tab_1">
 	                  		<div class="row">
 		                  		<div class="col-md-6 col-xs-12">
-			                    	<div class="form-group @if ($errors->first('fImages')!='') has-error @endif">
+			                    	<!-- <div class="form-group @if ($errors->first('fImages')!='') has-error @endif">
 										<div class="form-group">
 											<img src="{{ asset('upload/product/'.$data->photo) }}" onerror="this.src='{{asset('public/admin_assets/images/no-image.jpg')}}'" width="200"  alt="NO PHOTO" />
 											<input type="hidden" name="img_current" value="{!! @$data->photo !!}">
@@ -43,10 +44,10 @@
 								    	@if ($errors->first('fImages')!='')
 								      	<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {!! $errors->first('fImages'); !!}</label>
 								      	@endif
-									</div>
+									</div> -->
 									
 									<div class="clearfix"></div>
-						        	<div class="form-group">
+						        	<div class="form-group hidden">
 								      	<label for="ten">Danh mục cha</label>
 								      	<select name="txtProductCate" class="form-control">
 
@@ -68,10 +69,13 @@
 								      	<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {!! $errors->first('txtAlias'); !!}</label>
 								      	@endif
 									</div>
-									<!-- <div class="form-group">
+									
+								</div>
+								<div class="col-md-12 col-xs-12">
+									<div class="form-group">
 										<label for="">Mô tả</label>
-										<textarea name="description" rows="5" id="txtContent" class="form-control">{{$data->description}}</textarea>
-									</div> -->
+										<textarea name="mota" rows="5" id="txtContent" class="form-control">{{$data->mota}}</textarea>
+									</div>
 								</div>
 							</div>
 							<div class="clearfix"></div>
@@ -99,7 +103,7 @@
 	            </div>
 	            <div class="clearfix"></div>
 			    <div class="col-md-6">
-			    	<div class="form-group">
+			    	<!-- <div class="form-group">
 					      <label for="ten">Số thứ tự</label>
 					      <input type="number" min="1" name="stt" value="{!! isset($data->stt) ? $data->stt : (count($parent)+1) !!}" class="form-control" style="width: 100px;">
 				    </div>
@@ -107,7 +111,7 @@
 					    <label>
 				        	<input type="checkbox" name="noibat" {!! (!isset($data->noibat) || $data->noibat==1)?'checked="checked"':'' !!}> Nổi bật
 				    	</label>
-				    </div>
+				    </div> -->
 				    <div class="form-group">
 					    <label>
 				        	<input type="checkbox" name="status" {!! (!isset($data->status) || $data->status==1)?'checked="checked"':'' !!}> Hiển thị

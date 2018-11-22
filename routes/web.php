@@ -26,14 +26,12 @@ Route::get('catalog', 'IndexController@catalog')->name('catalog');
 // Ajax load more project
 Route::get('loadmore/project','IndexController@loadmoreProject')->name('loadmoreProject');
 
-Route::get('ghtk/connect', 'ApiController@index')->name('ghtk.connect');
-
 
 Route::get('tim-kiem',['as'=>'search', 'uses'=>'IndexController@search']);
 Route::post('newsletter',['as'=>'postNewsletter', 'uses'=>'IndexController@postNewsletter']);
-Route::get('san-pham',['as'=>'getProduct', 'uses'=>'IndexController@getProduct']);
-Route::get('san-pham/{alias}.html','IndexController@getProductDetail')->name('detailProduct');
-Route::get('san-pham/{id}',['as'=>'getProductList', 'uses'=>'IndexController@getProductList']);
+Route::get('san-pham-mau',['as'=>'getProduct', 'uses'=>'IndexController@getProduct']);
+Route::get('san-pham-mau/{alias}.html','IndexController@getProductDetail')->name('detailProduct');
+Route::get('san-pham-mau/{id}',['as'=>'getProductList', 'uses'=>'IndexController@getProductList']);
 Route::get('danh-muc/{alias}', 'IndexController@getProductByCate')->name('detailCategory');
 
 Route::get('hang-moi-ve', 'IndexController@newProduct');
