@@ -18,7 +18,7 @@ $(document).ready(function($){
 		            items:2,          
 		        },
 		        1000:{
-		            items:2,  
+		            items:3,  
 		        }
 		    }
 		});
@@ -62,11 +62,11 @@ $(document).ready(function($){
 		  if (window.pageYOffset > sticky) {
 		    navbar.classList.add("sticky");
 		    $('.logo-fix-scroll').css('display','block');
-		    // $('.logo').css('display','none');
+		    // $('.menu').css('position','unset');
 		  } else {
 		    navbar.classList.remove("sticky");
 		    $('.logo-fix-scroll').css('display','none');
-		    // $('.logo').css('display','block');
+		    // $('.menu').css('position','absolute');
 		  }
 		}
 
